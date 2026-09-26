@@ -1,0 +1,1602 @@
+{
+  "schema": "msb-mcp-tool-manifest-v1",
+  "servers": {
+    "Terminal_Controller": {
+      "server_identity": "Terminal_Controller",
+      "source_config": "data/tools/normal_tools/Terminal_Controller.json",
+      "source_config_sha256": "b6edffd7c679204c48fd31da0cc727828f19854eae735bfcf73ce44b66a1569b",
+      "tools": [
+        {
+          "name": "execute_command",
+          "description": "\n    Execute terminal command and return results\n    \n    Args:\n        command: Command line command to execute\n        timeout: Command timeout in seconds, default is 30 seconds\n    \n    Returns:\n        Output of the command execution\n    ",
+          "inputSchema": {
+            "properties": {
+              "command": {
+                "title": "Command",
+                "type": "string"
+              },
+              "timeout": {
+                "default": 30,
+                "title": "Timeout",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "title": "execute_commandArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "execute_commandOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "command": "code"
+          }
+        },
+        {
+          "name": "get_command_history",
+          "description": "\n    Get recent command execution history\n    \n    Args:\n        count: Number of recent commands to return\n    \n    Returns:\n        Formatted command history record\n    ",
+          "inputSchema": {
+            "properties": {
+              "count": {
+                "default": 10,
+                "title": "Count",
+                "type": "integer"
+              }
+            },
+            "title": "get_command_historyArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "get_command_historyOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {}
+        },
+        {
+          "name": "get_current_directory",
+          "description": "\n    Get current working directory\n    \n    Returns:\n        Path of current working directory\n    ",
+          "inputSchema": {
+            "properties": {},
+            "title": "get_current_directoryArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "get_current_directoryOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {}
+        },
+        {
+          "name": "change_directory",
+          "description": "\n    Change current working directory\n    \n    Args:\n        path: Directory path to switch to\n    \n    Returns:\n        Operation result information\n    ",
+          "inputSchema": {
+            "properties": {
+              "path": {
+                "title": "Path",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "title": "change_directoryArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "change_directoryOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "path": "path"
+          }
+        }
+      ]
+    },
+    "DuckDuckGo_Search_Server": {
+      "server_identity": "DuckDuckGo_Search_Server",
+      "source_config": "data/tools/normal_tools/DuckDuckGo_Search_Server.json",
+      "source_config_sha256": "0037a85d4d06c985200e770f5df5f0a776589df8d2666de4ac08514e016650fd",
+      "tools": [
+        {
+          "name": "search_query",
+          "description": "\n    Search DuckDuckGo and return formatted results.\n\n    Args:\n        query: The search query string\n        max_results: Maximum number of results to return (default: 10)\n        ctx: MCP context for logging\n    ",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              },
+              "max_results": {
+                "default": 10,
+                "title": "Max Results",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_queryArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_queryOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "query": "natural_language"
+          }
+        },
+        {
+          "name": "fetch_content",
+          "description": "\n    Fetch and parse content from a webpage URL.\n\n    Args:\n        url: The webpage URL to fetch content from\n        ctx: MCP context for logging\n    ",
+          "inputSchema": {
+            "properties": {
+              "url": {
+                "title": "Url",
+                "type": "string"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "title": "fetch_contentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "fetch_contentOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "url": "url"
+          }
+        }
+      ]
+    },
+    "Office_Word_Document_Server": {
+      "server_identity": "Office_Word_Document_Server",
+      "source_config": "data/tools/normal_tools/Office_Word_Document_Server.json",
+      "source_config_sha256": "eb877758685149033f8e352b537929484dc4b5eb9d1dc5fb35ce90c7aca81014",
+      "tools": [
+        {
+          "name": "create_document",
+          "description": "Create a new Word document with optional metadata.",
+          "inputSchema": {
+            "properties": {
+              "filename": {
+                "title": "Filename",
+                "type": "string"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              },
+              "author": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Author"
+              }
+            },
+            "required": [
+              "filename"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "filename": "path",
+            "title": "natural_language",
+            "author": "natural_language"
+          }
+        },
+        {
+          "name": "copy_document",
+          "description": "Create a copy of a Word document.",
+          "inputSchema": {
+            "properties": {
+              "source_filename": {
+                "title": "Source Filename",
+                "type": "string"
+              },
+              "destination_filename": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Destination Filename"
+              }
+            },
+            "required": [
+              "source_filename"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "source_filename": "path",
+            "destination_filename": "path"
+          }
+        },
+        {
+          "name": "get_document_info",
+          "description": "Get information about a Word document.",
+          "inputSchema": {
+            "properties": {
+              "filename": {
+                "title": "Filename",
+                "type": "string"
+              }
+            },
+            "required": [
+              "filename"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {
+            "filename": "path"
+          }
+        },
+        {
+          "name": "get_document_text",
+          "description": "Extract all text from a Word document.",
+          "inputSchema": {
+            "properties": {
+              "filename": {
+                "title": "Filename",
+                "type": "string"
+              }
+            },
+            "required": [
+              "filename"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {
+            "filename": "path"
+          }
+        },
+        {
+          "name": "add_heading",
+          "description": "Add a heading to a Word document.",
+          "inputSchema": {
+            "properties": {
+              "filename": {
+                "title": "Filename",
+                "type": "string"
+              },
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "level": {
+                "default": 1,
+                "title": "Level",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "filename",
+              "text"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "filename": "path",
+            "text": "natural_language"
+          }
+        },
+        {
+          "name": "add_paragraph",
+          "description": "Add a paragraph to a Word document.",
+          "inputSchema": {
+            "properties": {
+              "filename": {
+                "title": "Filename",
+                "type": "string"
+              },
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "style": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Style"
+              }
+            },
+            "required": [
+              "filename",
+              "text"
+            ],
+            "type": "object"
+          },
+          "outputSchema": null,
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "filename": "path",
+            "text": "natural_language"
+          }
+        }
+      ]
+    },
+    "Flux_ImageGen_Server": {
+      "server_identity": "Flux_ImageGen_Server",
+      "source_config": "data/tools/normal_tools/Flux_ImageGen_Server.json",
+      "source_config_sha256": "adb16476e6e6c46e92f09f48a3a82d4744b917f500aecf19d452a1ba4be9d299",
+      "tools": [
+        {
+          "name": "generateImageUrl",
+          "description": "\n    Generate an image URL from a text prompt\n    ",
+          "inputSchema": {
+            "properties": {
+              "prompt": {
+                "default": null,
+                "title": "Prompt",
+                "type": "string"
+              }
+            },
+            "title": "generateImageUrlArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "additionalProperties": true,
+                "title": "Result",
+                "type": "object"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "generateImageUrlOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "prompt": "natural_language"
+          }
+        },
+        {
+          "name": "generateImage",
+          "description": "\n    Generate an image, return the base64-encoded data, and save to a file by default\n    ",
+          "inputSchema": {
+            "properties": {
+              "prompt": {
+                "default": null,
+                "title": "Prompt",
+                "type": "string"
+              }
+            },
+            "title": "generateImageArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "generateImageOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "prompt": "natural_language"
+          }
+        },
+        {
+          "name": "listImageModels",
+          "description": "\n    List available image models\n    ",
+          "inputSchema": {
+            "properties": {},
+            "title": "listImageModelsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "listImageModelsOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {}
+        }
+      ]
+    },
+    "Filesystem_MCP_Server": {
+      "server_identity": "Filesystem_MCP_Server",
+      "source_config": "data/tools/support_tools/Filesystem_MCP_Server.json",
+      "source_config_sha256": "582c041dca3c78e76374b85738e69be683c04689a8b1d951a30356be53096374",
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "tail": {
+                "description": "If provided, returns only the last N lines of the file",
+                "type": "number"
+              },
+              "head": {
+                "description": "If provided, returns only the first N lines of the file",
+                "type": "number"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "read_text_file",
+          "description": "Read the complete contents of a file from the file system as text. Handles various text encodings and provides detailed error messages if the file cannot be read. Use this tool when you need to examine the contents of a single file. Use the 'head' parameter to read only the first N lines of a file, or the 'tail' parameter to read only the last N lines of a file. Operates on the file as text regardless of extension. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "tail": {
+                "description": "If provided, returns only the last N lines of the file",
+                "type": "number"
+              },
+              "head": {
+                "description": "If provided, returns only the first N lines of the file",
+                "type": "number"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "read_media_file",
+          "description": "Read a file and return it as a base64-encoded content block with its MIME type. Image and audio files are returned as image/audio content; any other file type is returned as an embedded resource. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "audio"
+                          ]
+                        },
+                        "data": {
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "data",
+                        "mimeType"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "const": "resource"
+                        },
+                        "resource": {
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "type": "string"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "blob": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "uri",
+                            "blob"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "resource"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "read_multiple_files",
+          "description": "Read the contents of multiple files simultaneously. This is more efficient than reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "paths": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of file paths to read. Each path must be a string pointing to a valid file within allowed directories."
+              }
+            },
+            "required": [
+              "paths"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "paths": "path"
+          }
+        },
+        {
+          "name": "write_file",
+          "description": "Create a new file or completely overwrite an existing file with new content. Use with caution as it will overwrite existing files without warning. Handles text content with proper encoding. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "content"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": false,
+            "destructiveHint": true,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "x-effect": true,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "edit_file",
+          "description": "Make line-based edits to a text file. Each edit replaces exact line sequences with new content. Returns a git-style diff showing the changes made. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "edits": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "oldText": {
+                      "type": "string",
+                      "description": "Text to search for - must match exactly"
+                    },
+                    "newText": {
+                      "type": "string",
+                      "description": "Text to replace with"
+                    }
+                  },
+                  "required": [
+                    "oldText",
+                    "newText"
+                  ]
+                }
+              },
+              "dryRun": {
+                "default": false,
+                "description": "Preview changes using git-style diff format",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "path",
+              "edits"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": false,
+            "destructiveHint": true,
+            "idempotentHint": false,
+            "openWorldHint": false
+          },
+          "x-effect": true,
+          "argument_types": {
+            "path": "path",
+            "edits": "code"
+          }
+        },
+        {
+          "name": "create_directory",
+          "description": "Create a new directory or ensure a directory exists. Can create multiple nested directories in one operation. If the directory already exists, this operation will succeed silently. Perfect for setting up directory structures for projects or ensuring required paths exist. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": false,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false
+          },
+          "x-effect": true,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "list_directory",
+          "description": "Get a detailed listing of all files and directories in a specified path. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is essential for understanding directory structure and finding specific files within a directory. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "list_directory_with_sizes",
+          "description": "Get a detailed listing of all files and directories in a specified path, including sizes. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is useful for understanding directory structure and finding specific files within a directory. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sortBy": {
+                "default": "name",
+                "description": "Sort entries by name or size",
+                "type": "string",
+                "enum": [
+                  "name",
+                  "size"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "directory_tree",
+          "description": "Get a recursive tree view of files and directories as a JSON structure. Each entry includes 'name', 'type' (file/directory), and 'children' for directories. Files have no children array, while directories always have a children array (which may be empty). The output is formatted with 2-space indentation for readability. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "excludePatterns": {
+                "default": [],
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "move_file",
+          "description": "Move or rename files and directories. Can move files between directories and rename them in a single operation. If the destination exists, the operation will fail. Works across different directories and can be used for simple renaming within the same directory. Both source and destination must be within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "destination": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "destination"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": false,
+            "destructiveHint": true,
+            "idempotentHint": false,
+            "openWorldHint": false
+          },
+          "x-effect": true,
+          "argument_types": {
+            "source": "path",
+            "destination": "path"
+          }
+        },
+        {
+          "name": "search_files",
+          "description": "Recursively search for files and directories matching a pattern. The patterns should be glob-style patterns that match paths relative to the working directory. Use pattern like '*.ext' to match files in current directory, and '**/*.ext' to match files in all subdirectories. Returns full paths to all matching items. Great for finding files when you don't know their exact location. Only searches within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              },
+              "excludePatterns": {
+                "default": [],
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path",
+              "pattern"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path",
+            "pattern": "code/glob"
+          }
+        },
+        {
+          "name": "get_file_info",
+          "description": "Retrieve detailed metadata about a file or directory. Returns comprehensive information including size, creation time, last modified time, permissions, and type. This tool is perfect for understanding file characteristics without reading the actual content. Only works within allowed directories.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {
+            "path": "path"
+          }
+        },
+        {
+          "name": "list_allowed_directories",
+          "description": "Returns the list of directories that this server is allowed to access. Subdirectories within these allowed directories are also accessible. Use this to understand which directories and their nested paths are available before trying to access files.",
+          "inputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "additionalProperties": false
+          },
+          "annotations": {
+            "title": null,
+            "readOnlyHint": true,
+            "destructiveHint": null,
+            "idempotentHint": null,
+            "openWorldHint": false
+          },
+          "x-effect": false,
+          "argument_types": {}
+        }
+      ]
+    },
+    "PubMed_MCP_Server": {
+      "server_identity": "PubMed_MCP_Server",
+      "source_config": "data/tools/attack_tools/academic_search/PubMed_MCP_Server/pubmed_server.py",
+      "source_config_sha256": "c10b5e171984ebc475df80a8ff67525e90206dd078fb2f442f1fb31a52df3f30",
+      "tools": [
+        {
+          "name": "search_pubmed_key_words",
+          "description": "\n    Search for articles on PubMed using key words.\n\n    Args:\n        key_words: Search query string\n        num_results: Number of results to return (default: 10)\n\n    Returns:\n        List of dictionaries containing article information\n    ",
+          "inputSchema": {
+            "properties": {
+              "key_words": {
+                "title": "Key Words",
+                "type": "string"
+              },
+              "num_results": {
+                "default": 10,
+                "title": "Num Results",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "key_words"
+            ],
+            "title": "search_pubmed_key_wordsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_pubmed_key_wordsOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "key_words": "natural_language"
+          }
+        },
+        {
+          "name": "search_pubmed_advanced",
+          "description": "\n    Perform an advanced search for articles on PubMed.\n\n    Args:\n        term: General search term\n        title: Search in title\n        author: Author name\n        journal: Journal name\n        start_date: Start date for search range (format: YYYY/MM/DD)\n        end_date: End date for search range (format: YYYY/MM/DD)\n        num_results: Number of results to return (default: 10)\n\n    Returns:\n        List of dictionaries containing article information\n    ",
+          "inputSchema": {
+            "properties": {
+              "term": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Term"
+              },
+              "title": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Title"
+              },
+              "author": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Author"
+              },
+              "journal": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Journal"
+              },
+              "start_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Start Date"
+              },
+              "end_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "End Date"
+              },
+              "num_results": {
+                "default": 10,
+                "title": "Num Results",
+                "type": "integer"
+              }
+            },
+            "title": "search_pubmed_advancedArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_pubmed_advancedOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "term": "natural_language",
+            "title": "natural_language",
+            "author": "natural_language",
+            "journal": "natural_language"
+          }
+        },
+        {
+          "name": "get_pubmed_article_metadata",
+          "description": "\n    Fetch metadata for a PubMed article using its PMID.\n\n    Args:\n        pmid: PMID of the article (can be string or integer)\n\n    Returns:\n        Dictionary containing article metadata\n    ",
+          "inputSchema": {
+            "properties": {
+              "pmid": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Pmid"
+              }
+            },
+            "required": [
+              "pmid"
+            ],
+            "title": "get_pubmed_article_metadataArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "additionalProperties": true,
+                "title": "Result",
+                "type": "object"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "get_pubmed_article_metadataOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {}
+        },
+        {
+          "name": "download_pubmed_pdf",
+          "description": "\n    Attempt to download the full text PDF for a PubMed article.\n\n    Args:\n        pmid: PMID of the article (can be string or integer)\n\n    Returns:\n        String indicating the result of the download attempt\n    ",
+          "inputSchema": {
+            "properties": {
+              "pmid": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Pmid"
+              }
+            },
+            "required": [
+              "pmid"
+            ],
+            "title": "download_pubmed_pdfArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "download_pubmed_pdfOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {}
+        },
+        {
+          "name": "deep_paper_analysis",
+          "description": "\n    Perform a comprehensive analysis of a PubMed article.\n\n    Args:\n        pmid: PMID of the article\n\n    Returns:\n        Dictionary containing the comprehensive analysis structure\n    ",
+          "inputSchema": {
+            "properties": {
+              "pmid": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Pmid"
+              }
+            },
+            "required": [
+              "pmid"
+            ],
+            "title": "deep_paper_analysisArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Result",
+                "type": "object"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "deep_paper_analysisOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {}
+        }
+      ]
+    },
+    "Memory_Tool": {
+      "server_identity": "Memory_Tool",
+      "source_config": "data/tools/attack_tools/llm_enhancement/Memory_Tool/main.py",
+      "source_config_sha256": "154122e6b328e851d30291b940b6fbc84bca0c66a99f129d1a17d762f17d0671",
+      "tools": [
+        {
+          "name": "add_memory",
+          "description": "Add a new memory. This method is called everytime the user informs anything about themselves, their preferences, or anything that has any relevent information whcih can be useful in the future conversation. This can also be called when the user asks you to remember something.\n\n    Args:\n        text: The content to store in memory, including code, documentation, and context\n    ",
+          "inputSchema": {
+            "properties": {
+              "text": {
+                "title": "Text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "text"
+            ],
+            "title": "add_memoryArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "add_memoryOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": true,
+          "argument_types": {
+            "text": "natural_language"
+          }
+        },
+        {
+          "name": "search_memories",
+          "description": "Search through stored memories. This method is called ANYTIME the user asks anything.\n\n    Args:\n        query: Search query string describing what you're looking for. Can be natural language or specific technical terms.\n    ",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_memoriesArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "title": "Result",
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_memoriesOutput",
+            "type": "object"
+          },
+          "annotations": null,
+          "x-effect": false,
+          "argument_types": {
+            "query": "natural_language"
+          }
+        }
+      ]
+    }
+  }
+}

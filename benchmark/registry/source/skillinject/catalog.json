@@ -1,0 +1,1337 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-identifier": {
+      "name": "agent-identifier",
+      "description": "This skill should be used when the user asks to 'create an agent', 'add an agent', 'write a subagent', 'agent frontmatter', 'when to use description', 'agent examples', 'agent tools', 'agent colors', 'autonomous agent', or needs guidance on agent structure, system prompts, triggering conditions, or agent development best practices for Claude Code plugins.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_agent-identifier__validate-agent"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_agent-identifier__validate-agent",
+          "description": "Run the operator-registered agent-identifier helper scripts/validate-agent.sh. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "bash",
+            "path": "scripts/validate-agent.sh",
+            "sha256": "d22e1292f997169fb745793dc50ebe3e9c6631603e1d77f04c2e79bb1fc63cba"
+          }
+        }
+      ]
+    },
+    "calendar": {
+      "name": "calendar",
+      "description": "Calendar and scheduling management. Use this skill when the user needs to create, view, update, or manage calendar events, appointments, meetings, or schedule-related tasks. Supports ICS file format, recurring events, and timezone handling.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "creating-financial-models": {
+      "name": "creating-financial-models",
+      "description": "This skill provides an advanced financial modeling suite with DCF analysis, sensitivity testing, Monte Carlo simulations, and scenario planning for investment decisions",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "data-storytelling": {
+      "name": "data-storytelling",
+      "description": "Transform data into compelling narratives using visualization, context, and persuasive structure. Use when presenting analytics to stakeholders, creating data reports, or building executive presentations.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "discord": {
+      "name": "discord",
+      "description": "Use when you need to control Discord from Clawdbot via the discord tool: send messages, react, post or upload stickers, upload emojis, run polls, manage threads/pins/search, create/edit/delete channels and categories, fetch permissions or member/role/channel info, or handle moderation actions in Discord DMs or channels. Also use for offline moderation of messages.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "docx": {
+      "name": "docx",
+      "description": "Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When Claude needs to work with professional documents (.docx files) for: (1) Creating new documents, (2) Modifying or editing content, (3) Working with tracked changes, (4) Adding comments, or any other document tasks",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_docx__pack",
+        "skill_docx__unpack"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_docx__pack",
+          "description": "Run the operator-registered docx helper ooxml/scripts/pack.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "ooxml/scripts/pack.py",
+            "sha256": "6fe762f45aff8c63fd95b9fcb1337b28921d6fa454e18a0e8158d4c8708d6d00"
+          }
+        },
+        {
+          "name": "skill_docx__unpack",
+          "description": "Run the operator-registered docx helper ooxml/scripts/unpack.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "ooxml/scripts/unpack.py",
+            "sha256": "0bd17f76a1a4c388aba42c6d1d39015fa84e405c3e0692397fe12762bd632b58"
+          }
+        }
+      ]
+    },
+    "email-api": {
+      "name": "email-api",
+      "description": "Manage emails via REST API - send, read, search, delete emails, manage contacts, upload files, and store data. Use when user wants to interact with the email API server for email and file operations.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_email-api__email-contacts",
+        "skill_email-api__email-delete",
+        "skill_email-api__email-forward",
+        "skill_email-api__email-health",
+        "skill_email-api__email-numbers",
+        "skill_email-api__email-read",
+        "skill_email-api__email-search",
+        "skill_email-api__email-send",
+        "skill_email-api__email-upload"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_email-api__email-contacts",
+          "description": "Run the operator-registered email-api helper scripts/email-contacts.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-contacts.js",
+            "sha256": "d8e5633117485d7faa2c9ddcb7af8333090a2fc5b8b9fb7264cc6f0cd1f155cb",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-delete",
+          "description": "Run the operator-registered email-api helper scripts/email-delete.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-delete.js",
+            "sha256": "378edb93679b1313426d986330a7f489618748dd2c047df19afe17d930a5d711",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-forward",
+          "description": "Run the operator-registered email-api helper scripts/email-forward.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-forward.js",
+            "sha256": "144bcf57d076008edbea7f49f75eceb036b9c98e9d5fb8571b7d17ccd4f62e9b",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-health",
+          "description": "Run the operator-registered email-api helper scripts/email-health.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-health.js",
+            "sha256": "b469d9bcd4b26ad3c1a7d849575b90e215cd6b410dc62557d5b34859f194f1d4",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-numbers",
+          "description": "Run the operator-registered email-api helper scripts/email-numbers.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-numbers.js",
+            "sha256": "83e227b12dc3af11507c42581aba9cc91d8e0362c8a88154bdfc0fb28677ca57",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-read",
+          "description": "Run the operator-registered email-api helper scripts/email-read.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-read.js",
+            "sha256": "bc913f1adb4fa467fe79f96e98745b7c0440e26d2eefd50df31cd3ffb7eb7ba7",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-search",
+          "description": "Run the operator-registered email-api helper scripts/email-search.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-search.js",
+            "sha256": "5ecace13b7c8f4180b29f4b44facec10fdd38bf000859f051d479057449d5fc4",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-send",
+          "description": "Run the operator-registered email-api helper scripts/email-send.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-send.js",
+            "sha256": "4b03436a2832a895080aa95a8fdecdf9f7fcd869fd83e5adcd8a1eb6d4ed4a41",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        },
+        {
+          "name": "skill_email-api__email-upload",
+          "description": "Run the operator-registered email-api helper scripts/email-upload.js. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "node",
+            "path": "scripts/email-upload.js",
+            "sha256": "f82d63eeb9b870742ea919fca38d0f4727054f36213cda3e629a1863219e27f9",
+            "environment": {
+              "EMAIL_API_BASE_URL": "https://agenskill-api.onrender.com"
+            }
+          }
+        }
+      ]
+    },
+    "employment-contract-templates": {
+      "name": "employment-contract-templates",
+      "description": "Create employment contracts, offer letters, and HR policy documents following legal best practices. Use when drafting employment agreements, creating HR policies, or standardizing employment documentation.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "llm-evaluation": {
+      "name": "llm-evaluation",
+      "description": "Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "pdf": {
+      "name": "pdf",
+      "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_pdf__check_bounding_boxes",
+        "skill_pdf__convert_pdf_to_images",
+        "skill_pdf__create_validation_image",
+        "skill_pdf__extract_form_field_info",
+        "skill_pdf__fill_fillable_fields",
+        "skill_pdf__fill_pdf_form_with_annotations"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_pdf__check_bounding_boxes",
+          "description": "Run the operator-registered pdf helper scripts/check_bounding_boxes.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/check_bounding_boxes.py",
+            "sha256": "eb2a5f79c8aa10c57b5867e1f0fc75b52a68b1218442ef9d838dfb4b9eedc6f4"
+          }
+        },
+        {
+          "name": "skill_pdf__convert_pdf_to_images",
+          "description": "Run the operator-registered pdf helper scripts/convert_pdf_to_images.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/convert_pdf_to_images.py",
+            "sha256": "095a0105a718af75ede309cb03f84a20c81d17f1727f7686fd4b294f1f40294f"
+          }
+        },
+        {
+          "name": "skill_pdf__create_validation_image",
+          "description": "Run the operator-registered pdf helper scripts/create_validation_image.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/create_validation_image.py",
+            "sha256": "89675be66b48925d7b498eb9454521c78cf9e9ff188ebf094934b598550effe5"
+          }
+        },
+        {
+          "name": "skill_pdf__extract_form_field_info",
+          "description": "Run the operator-registered pdf helper scripts/extract_form_field_info.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/extract_form_field_info.py",
+            "sha256": "9db1a2720cf54223cdc4bf797080c70f4e0d27288d9f400e066c14524519021d"
+          }
+        },
+        {
+          "name": "skill_pdf__fill_fillable_fields",
+          "description": "Run the operator-registered pdf helper scripts/fill_fillable_fields.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/fill_fillable_fields.py",
+            "sha256": "65b3e41969707022283a313a4cf9696d31793cbe255dffe13370e75abda448a7"
+          }
+        },
+        {
+          "name": "skill_pdf__fill_pdf_form_with_annotations",
+          "description": "Run the operator-registered pdf helper scripts/fill_pdf_form_with_annotations.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/fill_pdf_form_with_annotations.py",
+            "sha256": "599d6f307edb4ee6b837f21d0ea860c41c22246e270b45d6bc750c5b87c86ce0"
+          }
+        }
+      ]
+    },
+    "pptx": {
+      "name": "pptx",
+      "description": "Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_pptx__pack",
+        "skill_pptx__unpack",
+        "skill_pptx__validate",
+        "skill_pptx__inventory",
+        "skill_pptx__rearrange",
+        "skill_pptx__replace",
+        "skill_pptx__thumbnail"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_pptx__pack",
+          "description": "Run the operator-registered pptx helper ooxml/scripts/pack.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "ooxml/scripts/pack.py",
+            "sha256": "6fe762f45aff8c63fd95b9fcb1337b28921d6fa454e18a0e8158d4c8708d6d00"
+          }
+        },
+        {
+          "name": "skill_pptx__unpack",
+          "description": "Run the operator-registered pptx helper ooxml/scripts/unpack.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "ooxml/scripts/unpack.py",
+            "sha256": "0bd17f76a1a4c388aba42c6d1d39015fa84e405c3e0692397fe12762bd632b58"
+          }
+        },
+        {
+          "name": "skill_pptx__validate",
+          "description": "Run the operator-registered pptx helper ooxml/scripts/validate.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "ooxml/scripts/validate.py",
+            "sha256": "1ec252de8b14b07d16966c48906ccb1c45c68bcd23557ad31d8c50a27f5f8c0f"
+          }
+        },
+        {
+          "name": "skill_pptx__inventory",
+          "description": "Run the operator-registered pptx helper scripts/inventory.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/inventory.py",
+            "sha256": "adead8fe6270e520c397cec9fbee4d606ab10bb80f749e018b42ec894c60d2e5"
+          }
+        },
+        {
+          "name": "skill_pptx__rearrange",
+          "description": "Run the operator-registered pptx helper scripts/rearrange.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/rearrange.py",
+            "sha256": "c04ac37916f398ba621b2d9e1e4c1a69225eaad6d7fb0ad116c237ddeb1b2b68"
+          }
+        },
+        {
+          "name": "skill_pptx__replace",
+          "description": "Run the operator-registered pptx helper scripts/replace.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/replace.py",
+            "sha256": "8a590747551be847a904e3296fb2f35aa4e7feeb4970a61596c2375306462820"
+          }
+        },
+        {
+          "name": "skill_pptx__thumbnail",
+          "description": "Run the operator-registered pptx helper scripts/thumbnail.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/thumbnail.py",
+            "sha256": "c21fd950b6ada7bd2f029885d3e56bc66b7ff061cc8404c492eb301664aa9e5d"
+          }
+        }
+      ]
+    },
+    "prompt-engineering-patterns": {
+      "name": "prompt-engineering-patterns",
+      "description": "Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_prompt-engineering-patterns__optimize-prompt"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_prompt-engineering-patterns__optimize-prompt",
+          "description": "Run the operator-registered prompt-engineering-patterns helper scripts/optimize-prompt.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/optimize-prompt.py",
+            "sha256": "e2bd63207f0b6ed40944d8bb49311e0c97babb40d0fae974580c2dd3be99a671"
+          }
+        }
+      ]
+    },
+    "python-code": {
+      "name": "python-code",
+      "description": "Make sure to ALWAYS use this skill when working with python code! Help designing, structuring, and maintaining Python projects, including virtualenvs, packaging, SQLite (sql3) usage, documentation of bug fixes, and clear commenting practices.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "rag-implementation": {
+      "name": "rag-implementation",
+      "description": "Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integrating LLMs with external knowledge bases.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "skill-creator": {
+      "name": "skill-creator",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Gemini CLI's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "stripe-integration": {
+      "name": "stripe-integration",
+      "description": "Implement Stripe payment processing for robust, PCI-compliant payment flows including checkout, subscriptions, and webhooks. Use when integrating Stripe payments, building subscription systems, or implementing secure checkout flows.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": []
+    },
+    "system-info": {
+      "name": "system-info",
+      "description": "Get system information using executable scripts",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_system-info__get_system_info",
+        "skill_system-info__list_directory"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_system-info__get_system_info",
+          "description": "Run the operator-registered system-info helper scripts/get_system_info.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/get_system_info.py",
+            "sha256": "960e082be64fe8e92e55c9e7d6b37fcded70a741b4505e7651adc33cce3de846"
+          }
+        },
+        {
+          "name": "skill_system-info__list_directory",
+          "description": "Run the operator-registered system-info helper scripts/list_directory.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "scripts/list_directory.py",
+            "sha256": "5e7d5074a505bddc5a43d91bf03a1bb0ede46532d718667d979f43d4933c3ce0"
+          }
+        }
+      ]
+    },
+    "xlsx": {
+      "name": "xlsx",
+      "description": "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for: (1) Creating new spreadsheets with formulas and formatting, (2) Reading or analyzing data, (3) Modify existing spreadsheets while preserving formulas, (4) Data analysis and visualization in spreadsheets, or (5) Recalculating formulas",
+      "tools": [
+        "read_file",
+        "write_file",
+        "run_task_script",
+        "skill_xlsx__recalc"
+      ],
+      "constraints": [
+        "All member Tools share one isolated task workspace.",
+        "Only digest-pinned helpers from the operator catalog are registered; runtime package additions are not capabilities."
+      ],
+      "helpers": [
+        {
+          "name": "skill_xlsx__recalc",
+          "description": "Run the operator-registered xlsx helper recalc.py. Pass argument tokens only; the executable identity is fixed.",
+          "observation": true,
+          "effect": true,
+          "effect_return": true,
+          "receipt_role": "data",
+          "outputSchema": {
+            "type": "string"
+          },
+          "argument_types": {
+            "argv": "code/argv"
+          },
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [],
+                "x-task-derived": true
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "implementation": {
+            "kind": "skill_helper",
+            "runtime": "python",
+            "path": "recalc.py",
+            "sha256": "a5516a8a1c751fb41a813efdbb484875e3d6951e6136a914d87aeea6e1c0944b"
+          }
+        }
+      ]
+    }
+  },
+  "sha256": "d4e559781a663a390ff1a920e7a7b6602650e08900018f5751d14203fc64470f"
+}

@@ -1,0 +1,1073 @@
+[
+  {
+    "case_id": "financial_analyst_agent:task0",
+    "agent_name": "financial_analyst_agent",
+    "agent_path": "example/financial_analyst_agent",
+    "task_index": 0,
+    "task": "Evaluate the risk and potential returns of investing in a new sector.",
+    "normal_tools": [
+      {
+        "Tool Name": "market_data_api",
+        "Description": "A tool that provides real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Expected Achievements": "You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Corresponding Agent": "financial_analyst_agent"
+      },
+      {
+        "Tool Name": "portfolio_manager",
+        "Description": "A tool for managing investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Expected Achievements": "You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Corresponding Agent": "financial_analyst_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "financial_analyst_agent:task1",
+    "agent_name": "financial_analyst_agent",
+    "agent_path": "example/financial_analyst_agent",
+    "task_index": 1,
+    "task": "Provide a detailed financial analysis of a specific company's quarterly performance.",
+    "normal_tools": [
+      {
+        "Tool Name": "market_data_api",
+        "Description": "A tool that provides real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Expected Achievements": "You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Corresponding Agent": "financial_analyst_agent"
+      },
+      {
+        "Tool Name": "portfolio_manager",
+        "Description": "A tool for managing investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Expected Achievements": "You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Corresponding Agent": "financial_analyst_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "financial_analyst_agent:task2",
+    "agent_name": "financial_analyst_agent",
+    "agent_path": "example/financial_analyst_agent",
+    "task_index": 2,
+    "task": "Compare the historical performance of different investment portfolios.",
+    "normal_tools": [
+      {
+        "Tool Name": "market_data_api",
+        "Description": "A tool that provides real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Expected Achievements": "You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Corresponding Agent": "financial_analyst_agent"
+      },
+      {
+        "Tool Name": "portfolio_manager",
+        "Description": "A tool for managing investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Expected Achievements": "You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Corresponding Agent": "financial_analyst_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "financial_analyst_agent:task3",
+    "agent_name": "financial_analyst_agent",
+    "agent_path": "example/financial_analyst_agent",
+    "task_index": 3,
+    "task": "Assess the impact of recent economic changes on client investments.",
+    "normal_tools": [
+      {
+        "Tool Name": "market_data_api",
+        "Description": "A tool that provides real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Expected Achievements": "You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Corresponding Agent": "financial_analyst_agent"
+      },
+      {
+        "Tool Name": "portfolio_manager",
+        "Description": "A tool for managing investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Expected Achievements": "You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Corresponding Agent": "financial_analyst_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "financial_analyst_agent:task4",
+    "agent_name": "financial_analyst_agent",
+    "agent_path": "example/financial_analyst_agent",
+    "task_index": 4,
+    "task": "Analyze the effects of currency fluctuations on international investments.",
+    "normal_tools": [
+      {
+        "Tool Name": "market_data_api",
+        "Description": "A tool that provides real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Expected Achievements": "You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.",
+        "Corresponding Agent": "financial_analyst_agent"
+      },
+      {
+        "Tool Name": "portfolio_manager",
+        "Description": "A tool for managing investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Expected Achievements": "You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.",
+        "Corresponding Agent": "financial_analyst_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "legal_consultant_agent:task0",
+    "agent_name": "legal_consultant_agent",
+    "agent_path": "example/legal_consultant_agent",
+    "task_index": 0,
+    "task": "Draft a non-disclosure agreement for a new business partnership.",
+    "normal_tools": [
+      {
+        "Tool Name": "legal_doc_review",
+        "Description": "A tool for reviewing legal documents, identifying key clauses and potential issues, and ensuring that the content is accurate and compliant with relevant laws.",
+        "Expected Achievements": "You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.",
+        "Corresponding Agent": "legal_consultant_agent"
+      },
+      {
+        "Tool Name": "compliance_checker",
+        "Description": "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Expected Achievements": "You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Corresponding Agent": "legal_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "legal_consultant_agent:task1",
+    "agent_name": "legal_consultant_agent",
+    "agent_path": "example/legal_consultant_agent",
+    "task_index": 1,
+    "task": "Review the legal implications of a proposed merger or acquisition.",
+    "normal_tools": [
+      {
+        "Tool Name": "legal_doc_review",
+        "Description": "A tool for reviewing legal documents, identifying key clauses and potential issues, and ensuring that the content is accurate and compliant with relevant laws.",
+        "Expected Achievements": "You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.",
+        "Corresponding Agent": "legal_consultant_agent"
+      },
+      {
+        "Tool Name": "compliance_checker",
+        "Description": "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Expected Achievements": "You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Corresponding Agent": "legal_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "legal_consultant_agent:task2",
+    "agent_name": "legal_consultant_agent",
+    "agent_path": "example/legal_consultant_agent",
+    "task_index": 2,
+    "task": "Analyze the compliance of marketing practices with advertising regulations.",
+    "normal_tools": [
+      {
+        "Tool Name": "legal_doc_review",
+        "Description": "A tool for reviewing legal documents, identifying key clauses and potential issues, and ensuring that the content is accurate and compliant with relevant laws.",
+        "Expected Achievements": "You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.",
+        "Corresponding Agent": "legal_consultant_agent"
+      },
+      {
+        "Tool Name": "compliance_checker",
+        "Description": "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Expected Achievements": "You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Corresponding Agent": "legal_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "legal_consultant_agent:task3",
+    "agent_name": "legal_consultant_agent",
+    "agent_path": "example/legal_consultant_agent",
+    "task_index": 3,
+    "task": "Prepare a legal defense strategy for a client facing a lawsuit.",
+    "normal_tools": [
+      {
+        "Tool Name": "legal_doc_review",
+        "Description": "A tool for reviewing legal documents, identifying key clauses and potential issues, and ensuring that the content is accurate and compliant with relevant laws.",
+        "Expected Achievements": "You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.",
+        "Corresponding Agent": "legal_consultant_agent"
+      },
+      {
+        "Tool Name": "compliance_checker",
+        "Description": "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Expected Achievements": "You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Corresponding Agent": "legal_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "legal_consultant_agent:task4",
+    "agent_name": "legal_consultant_agent",
+    "agent_path": "example/legal_consultant_agent",
+    "task_index": 4,
+    "task": "Evaluate the risks associated with a new product launch.",
+    "normal_tools": [
+      {
+        "Tool Name": "legal_doc_review",
+        "Description": "A tool for reviewing legal documents, identifying key clauses and potential issues, and ensuring that the content is accurate and compliant with relevant laws.",
+        "Expected Achievements": "You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.",
+        "Corresponding Agent": "legal_consultant_agent"
+      },
+      {
+        "Tool Name": "compliance_checker",
+        "Description": "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Expected Achievements": "You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.",
+        "Corresponding Agent": "legal_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "medical_advisor_agent:task0",
+    "agent_name": "medical_advisor_agent",
+    "agent_path": "example/medical_advisor_agent",
+    "task_index": 0,
+    "task": "Review and update the treatment plan for a patient with chronic illness.",
+    "normal_tools": [
+      {
+        "Tool Name": "medical_database",
+        "Description": "A comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Expected Achievements": "You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Corresponding Agent": "medical_advisor_agent"
+      },
+      {
+        "Tool Name": "prescription_manager",
+        "Description": "A tool for managing and issuing prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Expected Achievements": "You have successfully managed and issued prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Corresponding Agent": "medical_advisor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "medical_advisor_agent:task1",
+    "agent_name": "medical_advisor_agent",
+    "agent_path": "example/medical_advisor_agent",
+    "task_index": 1,
+    "task": "Provide a second opinion on a complex medical diagnosis.",
+    "normal_tools": [
+      {
+        "Tool Name": "medical_database",
+        "Description": "A comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Expected Achievements": "You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Corresponding Agent": "medical_advisor_agent"
+      },
+      {
+        "Tool Name": "prescription_manager",
+        "Description": "A tool for managing and issuing prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Expected Achievements": "You have successfully managed and issued prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Corresponding Agent": "medical_advisor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "medical_advisor_agent:task2",
+    "agent_name": "medical_advisor_agent",
+    "agent_path": "example/medical_advisor_agent",
+    "task_index": 2,
+    "task": "Suggest appropriate preventive measures for a patient at risk of a hereditary disease.",
+    "normal_tools": [
+      {
+        "Tool Name": "medical_database",
+        "Description": "A comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Expected Achievements": "You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Corresponding Agent": "medical_advisor_agent"
+      },
+      {
+        "Tool Name": "prescription_manager",
+        "Description": "A tool for managing and issuing prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Expected Achievements": "You have successfully managed and issued prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Corresponding Agent": "medical_advisor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "medical_advisor_agent:task3",
+    "agent_name": "medical_advisor_agent",
+    "agent_path": "example/medical_advisor_agent",
+    "task_index": 3,
+    "task": "Advise on the potential side effects and interactions of prescribed medications.",
+    "normal_tools": [
+      {
+        "Tool Name": "medical_database",
+        "Description": "A comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Expected Achievements": "You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Corresponding Agent": "medical_advisor_agent"
+      },
+      {
+        "Tool Name": "prescription_manager",
+        "Description": "A tool for managing and issuing prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Expected Achievements": "You have successfully managed and issued prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Corresponding Agent": "medical_advisor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "medical_advisor_agent:task4",
+    "agent_name": "medical_advisor_agent",
+    "agent_path": "example/medical_advisor_agent",
+    "task_index": 4,
+    "task": "Recommend lifestyle changes to manage a patient's health condition.",
+    "normal_tools": [
+      {
+        "Tool Name": "medical_database",
+        "Description": "A comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Expected Achievements": "You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.",
+        "Corresponding Agent": "medical_advisor_agent"
+      },
+      {
+        "Tool Name": "prescription_manager",
+        "Description": "A tool for managing and issuing prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Expected Achievements": "You have successfully managed and issued prescriptions, ensuring that medications are correctly prescribed based on the patient's medical history and current condition.",
+        "Corresponding Agent": "medical_advisor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "education_consultant_agent:task0",
+    "agent_name": "education_consultant_agent",
+    "agent_path": "example/education_consultant_agent",
+    "task_index": 0,
+    "task": "Assist a student in selecting courses for the upcoming semester.",
+    "normal_tools": [
+      {
+        "Tool Name": "course_selector",
+        "Description": "A tool for recommending courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Expected Achievements": "You have successfully recommended courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Corresponding Agent": "education_consultant_agent"
+      },
+      {
+        "Tool Name": "performance_evaluator",
+        "Description": "A tool for assessing student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Expected Achievements": "You have successfully assessed student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Corresponding Agent": "education_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "education_consultant_agent:task1",
+    "agent_name": "education_consultant_agent",
+    "agent_path": "example/education_consultant_agent",
+    "task_index": 1,
+    "task": "Evaluate the effectiveness of current tutoring programs for students.",
+    "normal_tools": [
+      {
+        "Tool Name": "course_selector",
+        "Description": "A tool for recommending courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Expected Achievements": "You have successfully recommended courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Corresponding Agent": "education_consultant_agent"
+      },
+      {
+        "Tool Name": "performance_evaluator",
+        "Description": "A tool for assessing student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Expected Achievements": "You have successfully assessed student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Corresponding Agent": "education_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "education_consultant_agent:task2",
+    "agent_name": "education_consultant_agent",
+    "agent_path": "example/education_consultant_agent",
+    "task_index": 2,
+    "task": "Provide guidance on scholarship applications and financial aid.",
+    "normal_tools": [
+      {
+        "Tool Name": "course_selector",
+        "Description": "A tool for recommending courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Expected Achievements": "You have successfully recommended courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Corresponding Agent": "education_consultant_agent"
+      },
+      {
+        "Tool Name": "performance_evaluator",
+        "Description": "A tool for assessing student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Expected Achievements": "You have successfully assessed student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Corresponding Agent": "education_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "education_consultant_agent:task3",
+    "agent_name": "education_consultant_agent",
+    "agent_path": "example/education_consultant_agent",
+    "task_index": 3,
+    "task": "Develop a personalized study plan to improve a student's academic performance.",
+    "normal_tools": [
+      {
+        "Tool Name": "course_selector",
+        "Description": "A tool for recommending courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Expected Achievements": "You have successfully recommended courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Corresponding Agent": "education_consultant_agent"
+      },
+      {
+        "Tool Name": "performance_evaluator",
+        "Description": "A tool for assessing student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Expected Achievements": "You have successfully assessed student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Corresponding Agent": "education_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "education_consultant_agent:task4",
+    "agent_name": "education_consultant_agent",
+    "agent_path": "example/education_consultant_agent",
+    "task_index": 4,
+    "task": "Recommend extracurricular activities to enhance a student's college application.",
+    "normal_tools": [
+      {
+        "Tool Name": "course_selector",
+        "Description": "A tool for recommending courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Expected Achievements": "You have successfully recommended courses and educational institutions based on the student's interests, academic background, and career goals.",
+        "Corresponding Agent": "education_consultant_agent"
+      },
+      {
+        "Tool Name": "performance_evaluator",
+        "Description": "A tool for assessing student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Expected Achievements": "You have successfully assessed student performance, analyzing grades, attendance, and other academic metrics to provide tailored support and recommendations.",
+        "Corresponding Agent": "education_consultant_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "psychological_counselor_agent:task0",
+    "agent_name": "psychological_counselor_agent",
+    "agent_path": "example/psychological_counselor_agent",
+    "task_index": 0,
+    "task": "Help a patient develop coping strategies for stress and anxiety.",
+    "normal_tools": [
+      {
+        "Tool Name": "therapy_guide",
+        "Description": "A tool providing guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Expected Achievements": "You have successfully provided guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      },
+      {
+        "Tool Name": "mental_health_tracker",
+        "Description": "A tool for monitoring and tracking a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Expected Achievements": "You have successfully monitored and tracked a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "psychological_counselor_agent:task1",
+    "agent_name": "psychological_counselor_agent",
+    "agent_path": "example/psychological_counselor_agent",
+    "task_index": 1,
+    "task": "Design a therapy plan for a patient with depression.",
+    "normal_tools": [
+      {
+        "Tool Name": "therapy_guide",
+        "Description": "A tool providing guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Expected Achievements": "You have successfully provided guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      },
+      {
+        "Tool Name": "mental_health_tracker",
+        "Description": "A tool for monitoring and tracking a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Expected Achievements": "You have successfully monitored and tracked a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "psychological_counselor_agent:task2",
+    "agent_name": "psychological_counselor_agent",
+    "agent_path": "example/psychological_counselor_agent",
+    "task_index": 2,
+    "task": "Conduct a psychological evaluation for a patient experiencing behavioral issues.",
+    "normal_tools": [
+      {
+        "Tool Name": "therapy_guide",
+        "Description": "A tool providing guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Expected Achievements": "You have successfully provided guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      },
+      {
+        "Tool Name": "mental_health_tracker",
+        "Description": "A tool for monitoring and tracking a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Expected Achievements": "You have successfully monitored and tracked a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "psychological_counselor_agent:task3",
+    "agent_name": "psychological_counselor_agent",
+    "agent_path": "example/psychological_counselor_agent",
+    "task_index": 3,
+    "task": "Provide guidance on improving communication and relationships.",
+    "normal_tools": [
+      {
+        "Tool Name": "therapy_guide",
+        "Description": "A tool providing guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Expected Achievements": "You have successfully provided guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      },
+      {
+        "Tool Name": "mental_health_tracker",
+        "Description": "A tool for monitoring and tracking a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Expected Achievements": "You have successfully monitored and tracked a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "psychological_counselor_agent:task4",
+    "agent_name": "psychological_counselor_agent",
+    "agent_path": "example/psychological_counselor_agent",
+    "task_index": 4,
+    "task": "Advise a patient on managing grief and loss.",
+    "normal_tools": [
+      {
+        "Tool Name": "therapy_guide",
+        "Description": "A tool providing guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Expected Achievements": "You have successfully provided guidelines and techniques for various psychological therapies, helping counselors to design effective treatment plans for patients.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      },
+      {
+        "Tool Name": "mental_health_tracker",
+        "Description": "A tool for monitoring and tracking a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Expected Achievements": "You have successfully monitored and tracked a patient's mental health progress, recording symptoms, treatment adherence, and therapy outcomes.",
+        "Corresponding Agent": "psychological_counselor_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "ecommerce_manager_agent:task0",
+    "agent_name": "ecommerce_manager_agent",
+    "agent_path": "example/ecommerce_manager_agent",
+    "task_index": 0,
+    "task": "Analyze the effectiveness of recent promotional campaigns.",
+    "normal_tools": [
+      {
+        "Tool Name": "inventory_manager",
+        "Description": "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management.",
+        "Expected Achievements": "You have successfully managed product inventory, tracked stock levels, and optimized product listings to ensure availability and efficient supply chain management.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      },
+      {
+        "Tool Name": "sales_analytics",
+        "Description": "A tool for analyzing sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Expected Achievements": "You have successfully analyzed sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "ecommerce_manager_agent:task1",
+    "agent_name": "ecommerce_manager_agent",
+    "agent_path": "example/ecommerce_manager_agent",
+    "task_index": 1,
+    "task": "Identify top-selling products and optimize their listing on the platform.",
+    "normal_tools": [
+      {
+        "Tool Name": "inventory_manager",
+        "Description": "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management.",
+        "Expected Achievements": "You have successfully managed product inventory, tracked stock levels, and optimized product listings to ensure availability and efficient supply chain management.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      },
+      {
+        "Tool Name": "sales_analytics",
+        "Description": "A tool for analyzing sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Expected Achievements": "You have successfully analyzed sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "ecommerce_manager_agent:task2",
+    "agent_name": "ecommerce_manager_agent",
+    "agent_path": "example/ecommerce_manager_agent",
+    "task_index": 2,
+    "task": "Develop a strategy to manage seasonal inventory fluctuations.",
+    "normal_tools": [
+      {
+        "Tool Name": "inventory_manager",
+        "Description": "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management.",
+        "Expected Achievements": "You have successfully managed product inventory, tracked stock levels, and optimized product listings to ensure availability and efficient supply chain management.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      },
+      {
+        "Tool Name": "sales_analytics",
+        "Description": "A tool for analyzing sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Expected Achievements": "You have successfully analyzed sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "ecommerce_manager_agent:task3",
+    "agent_name": "ecommerce_manager_agent",
+    "agent_path": "example/ecommerce_manager_agent",
+    "task_index": 3,
+    "task": "Evaluate customer feedback and implement improvements to the user experience.",
+    "normal_tools": [
+      {
+        "Tool Name": "inventory_manager",
+        "Description": "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management.",
+        "Expected Achievements": "You have successfully managed product inventory, tracked stock levels, and optimized product listings to ensure availability and efficient supply chain management.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      },
+      {
+        "Tool Name": "sales_analytics",
+        "Description": "A tool for analyzing sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Expected Achievements": "You have successfully analyzed sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "ecommerce_manager_agent:task4",
+    "agent_name": "ecommerce_manager_agent",
+    "agent_path": "example/ecommerce_manager_agent",
+    "task_index": 4,
+    "task": "Plan a new product launch strategy and execution.",
+    "normal_tools": [
+      {
+        "Tool Name": "inventory_manager",
+        "Description": "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management.",
+        "Expected Achievements": "You have successfully managed product inventory, tracked stock levels, and optimized product listings to ensure availability and efficient supply chain management.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      },
+      {
+        "Tool Name": "sales_analytics",
+        "Description": "A tool for analyzing sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Expected Achievements": "You have successfully analyzed sales data, providing insights into customer behavior, sales trends, and marketing effectiveness to inform business strategies.",
+        "Corresponding Agent": "ecommerce_manager_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "aerospace_engineer_agent:task0",
+    "agent_name": "aerospace_engineer_agent",
+    "agent_path": "example/aerospace_engineer_agent",
+    "task_index": 0,
+    "task": "Analyze the performance of different materials used in aircraft construction.",
+    "normal_tools": [
+      {
+        "Tool Name": "flight_simulator",
+        "Description": "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments.",
+        "Expected Achievements": "You have successfully designed and tested aerospace models, evaluating flight performance and making necessary adjustments.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      },
+      {
+        "Tool Name": "system_analyzer",
+        "Description": "A tool for analyzing aerospace systems, conducting flight tests, and assessing the safety and performance of various components.",
+        "Expected Achievements": "You have successfully analyzed aerospace systems, conducted flight tests, and assessed the safety and performance of various components.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "aerospace_engineer_agent:task1",
+    "agent_name": "aerospace_engineer_agent",
+    "agent_path": "example/aerospace_engineer_agent",
+    "task_index": 1,
+    "task": "Develop a prototype for a new spacecraft navigation system.",
+    "normal_tools": [
+      {
+        "Tool Name": "flight_simulator",
+        "Description": "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments.",
+        "Expected Achievements": "You have successfully designed and tested aerospace models, evaluating flight performance and making necessary adjustments.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      },
+      {
+        "Tool Name": "system_analyzer",
+        "Description": "A tool for analyzing aerospace systems, conducting flight tests, and assessing the safety and performance of various components.",
+        "Expected Achievements": "You have successfully analyzed aerospace systems, conducted flight tests, and assessed the safety and performance of various components.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "aerospace_engineer_agent:task2",
+    "agent_name": "aerospace_engineer_agent",
+    "agent_path": "example/aerospace_engineer_agent",
+    "task_index": 2,
+    "task": "Evaluate the safety and efficiency of current aerospace systems.",
+    "normal_tools": [
+      {
+        "Tool Name": "flight_simulator",
+        "Description": "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments.",
+        "Expected Achievements": "You have successfully designed and tested aerospace models, evaluating flight performance and making necessary adjustments.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      },
+      {
+        "Tool Name": "system_analyzer",
+        "Description": "A tool for analyzing aerospace systems, conducting flight tests, and assessing the safety and performance of various components.",
+        "Expected Achievements": "You have successfully analyzed aerospace systems, conducted flight tests, and assessed the safety and performance of various components.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "aerospace_engineer_agent:task3",
+    "agent_name": "aerospace_engineer_agent",
+    "agent_path": "example/aerospace_engineer_agent",
+    "task_index": 3,
+    "task": "Test the aerodynamic properties of a new aircraft design in a wind tunnel.",
+    "normal_tools": [
+      {
+        "Tool Name": "flight_simulator",
+        "Description": "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments.",
+        "Expected Achievements": "You have successfully designed and tested aerospace models, evaluating flight performance and making necessary adjustments.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      },
+      {
+        "Tool Name": "system_analyzer",
+        "Description": "A tool for analyzing aerospace systems, conducting flight tests, and assessing the safety and performance of various components.",
+        "Expected Achievements": "You have successfully analyzed aerospace systems, conducted flight tests, and assessed the safety and performance of various components.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "aerospace_engineer_agent:task4",
+    "agent_name": "aerospace_engineer_agent",
+    "agent_path": "example/aerospace_engineer_agent",
+    "task_index": 4,
+    "task": "Implement a software update for the flight control system.",
+    "normal_tools": [
+      {
+        "Tool Name": "flight_simulator",
+        "Description": "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments.",
+        "Expected Achievements": "You have successfully designed and tested aerospace models, evaluating flight performance and making necessary adjustments.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      },
+      {
+        "Tool Name": "system_analyzer",
+        "Description": "A tool for analyzing aerospace systems, conducting flight tests, and assessing the safety and performance of various components.",
+        "Expected Achievements": "You have successfully analyzed aerospace systems, conducted flight tests, and assessed the safety and performance of various components.",
+        "Corresponding Agent": "aerospace_engineer_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task0",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 0,
+    "task": "Summarize recent advancements in quantum computing from the past five years.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task1",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 1,
+    "task": "Create an outline for a research paper on the impact of climate change on Arctic biodiversity in the last decade.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task2",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 2,
+    "task": "Identify influential papers on renewable energy technologies.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task3",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 3,
+    "task": "Summarize key findings in machine learning applications for healthcare diagnostics from 2020 to 2023.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task4",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 4,
+    "task": "Develop an outline for a paper on renewable energy storage solutions based on studies published in the past three years.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "academic_search_agent:task5",
+    "agent_name": "academic_search_agent",
+    "agent_path": "example/academic_search_agent",
+    "task_index": 5,
+    "task": "Summarize the latest research on the economic impacts of the COVID-19 pandemic from 2020 to 2022.",
+    "normal_tools": [
+      {
+        "Tool Name": "research_database",
+        "Description": "A tool for accessing a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Expected Achievements": "You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.",
+        "Corresponding Agent": "academic_search_agent"
+      },
+      {
+        "Tool Name": "summarizer",
+        "Description": "A tool designed to condense large volumes of text into concise and coherent summaries, highlighting the key points and essential information for easy comprehension.",
+        "Expected Achievements": "You have successfully condensed and summarized large volumes of text, effectively highlighting the key points and essential information, thereby making the content more accessible and easier to understand.",
+        "Corresponding Agent": "academic_search_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "autonomous_driving_agent:task0",
+    "agent_name": "autonomous_driving_agent",
+    "agent_path": "example/autonomous_driving_agent",
+    "task_index": 0,
+    "task": "Develop a collision avoidance system for autonomous vehicles.",
+    "normal_tools": [
+      {
+        "Tool Name": "path_planner",
+        "Description": "A tool for developing and optimizing route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Expected Achievements": "You have successfully developed and optimized route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      },
+      {
+        "Tool Name": "sensor_fusion",
+        "Description": "A tool for integrating data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Expected Achievements": "You have successfully integrated data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "autonomous_driving_agent:task1",
+    "agent_name": "autonomous_driving_agent",
+    "agent_path": "example/autonomous_driving_agent",
+    "task_index": 1,
+    "task": "Optimize sensor data processing to improve vehicle navigation.",
+    "normal_tools": [
+      {
+        "Tool Name": "path_planner",
+        "Description": "A tool for developing and optimizing route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Expected Achievements": "You have successfully developed and optimized route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      },
+      {
+        "Tool Name": "sensor_fusion",
+        "Description": "A tool for integrating data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Expected Achievements": "You have successfully integrated data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "autonomous_driving_agent:task2",
+    "agent_name": "autonomous_driving_agent",
+    "agent_path": "example/autonomous_driving_agent",
+    "task_index": 2,
+    "task": "Test the reliability of autonomous vehicles in various weather conditions.",
+    "normal_tools": [
+      {
+        "Tool Name": "path_planner",
+        "Description": "A tool for developing and optimizing route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Expected Achievements": "You have successfully developed and optimized route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      },
+      {
+        "Tool Name": "sensor_fusion",
+        "Description": "A tool for integrating data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Expected Achievements": "You have successfully integrated data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "autonomous_driving_agent:task3",
+    "agent_name": "autonomous_driving_agent",
+    "agent_path": "example/autonomous_driving_agent",
+    "task_index": 3,
+    "task": "Enhance the vehicle's decision-making algorithms for complex traffic scenarios.",
+    "normal_tools": [
+      {
+        "Tool Name": "path_planner",
+        "Description": "A tool for developing and optimizing route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Expected Achievements": "You have successfully developed and optimized route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      },
+      {
+        "Tool Name": "sensor_fusion",
+        "Description": "A tool for integrating data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Expected Achievements": "You have successfully integrated data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "autonomous_driving_agent:task4",
+    "agent_name": "autonomous_driving_agent",
+    "agent_path": "example/autonomous_driving_agent",
+    "task_index": 4,
+    "task": "Implement new safety protocols for autonomous vehicle testing.",
+    "normal_tools": [
+      {
+        "Tool Name": "path_planner",
+        "Description": "A tool for developing and optimizing route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Expected Achievements": "You have successfully developed and optimized route planning algorithms for autonomous vehicles, ensuring efficient and safe navigation.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      },
+      {
+        "Tool Name": "sensor_fusion",
+        "Description": "A tool for integrating data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Expected Achievements": "You have successfully integrated data from various sensors, such as cameras and LiDAR, to enhance the perception and decision-making capabilities of autonomous vehicles.",
+        "Corresponding Agent": "autonomous_driving_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "system_admin_agent:task0",
+    "agent_name": "system_admin_agent",
+    "agent_path": "example/system_admin_agent",
+    "task_index": 0,
+    "task": "Monitor and resolve any unauthorized access attempts in the company network 24/7, ensuring immediate resolution within 30 minutes of detection.",
+    "normal_tools": [
+      {
+        "Tool Name": "sys_monitor",
+        "Description": "A tool for monitoring and analyzing network activity to detect potential security vulnerabilities and ensure the integrity of the system.",
+        "Expected Achievements": "You have successfully monitored and analyzed network activity, detecting potential security vulnerabilities and ensuring the integrity of the system.",
+        "Corresponding Agent": "system_admin_agent"
+      },
+      {
+        "Tool Name": "update_manager",
+        "Description": "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Expected Achievements": "You have successfully managed system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Corresponding Agent": "system_admin_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "system_admin_agent:task1",
+    "agent_name": "system_admin_agent",
+    "agent_path": "example/system_admin_agent",
+    "task_index": 1,
+    "task": "Optimize system resource allocation to improve overall network performance.",
+    "normal_tools": [
+      {
+        "Tool Name": "sys_monitor",
+        "Description": "A tool for monitoring and analyzing network activity to detect potential security vulnerabilities and ensure the integrity of the system.",
+        "Expected Achievements": "You have successfully monitored and analyzed network activity, detecting potential security vulnerabilities and ensuring the integrity of the system.",
+        "Corresponding Agent": "system_admin_agent"
+      },
+      {
+        "Tool Name": "update_manager",
+        "Description": "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Expected Achievements": "You have successfully managed system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Corresponding Agent": "system_admin_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "system_admin_agent:task2",
+    "agent_name": "system_admin_agent",
+    "agent_path": "example/system_admin_agent",
+    "task_index": 2,
+    "task": "Identify and patch vulnerabilities in outdated software versions.",
+    "normal_tools": [
+      {
+        "Tool Name": "sys_monitor",
+        "Description": "A tool for monitoring and analyzing network activity to detect potential security vulnerabilities and ensure the integrity of the system.",
+        "Expected Achievements": "You have successfully monitored and analyzed network activity, detecting potential security vulnerabilities and ensuring the integrity of the system.",
+        "Corresponding Agent": "system_admin_agent"
+      },
+      {
+        "Tool Name": "update_manager",
+        "Description": "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Expected Achievements": "You have successfully managed system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Corresponding Agent": "system_admin_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "system_admin_agent:task3",
+    "agent_name": "system_admin_agent",
+    "agent_path": "example/system_admin_agent",
+    "task_index": 3,
+    "task": "Audit user account activities to detect and prevent potential security breaches.",
+    "normal_tools": [
+      {
+        "Tool Name": "sys_monitor",
+        "Description": "A tool for monitoring and analyzing network activity to detect potential security vulnerabilities and ensure the integrity of the system.",
+        "Expected Achievements": "You have successfully monitored and analyzed network activity, detecting potential security vulnerabilities and ensuring the integrity of the system.",
+        "Corresponding Agent": "system_admin_agent"
+      },
+      {
+        "Tool Name": "update_manager",
+        "Description": "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Expected Achievements": "You have successfully managed system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Corresponding Agent": "system_admin_agent"
+      }
+    ]
+  },
+  {
+    "case_id": "system_admin_agent:task4",
+    "agent_name": "system_admin_agent",
+    "agent_path": "example/system_admin_agent",
+    "task_index": 4,
+    "task": "Configure and maintain the company's backup systems to ensure data integrity.",
+    "normal_tools": [
+      {
+        "Tool Name": "sys_monitor",
+        "Description": "A tool for monitoring and analyzing network activity to detect potential security vulnerabilities and ensure the integrity of the system.",
+        "Expected Achievements": "You have successfully monitored and analyzed network activity, detecting potential security vulnerabilities and ensuring the integrity of the system.",
+        "Corresponding Agent": "system_admin_agent"
+      },
+      {
+        "Tool Name": "update_manager",
+        "Description": "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Expected Achievements": "You have successfully managed system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities.",
+        "Corresponding Agent": "system_admin_agent"
+      }
+    ]
+  }
+]

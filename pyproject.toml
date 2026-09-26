@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apex-defense"
+version = "0.1.0"
+description = "APEX active defense and benchmark integrations"
+requires-python = ">=3.10"
+dependencies = [
+  "openai>=1.40",
+  "openai-agents>=0.2",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+registry = ["agentdojo==0.1.35"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools]
+packages = [
+  "apex",
+  "apex.core",
+  "apex.defender",
+  "apex.defender.contract",
+  "benchmark",
+  "benchmark.adapter",
+  "benchmark.registry",
+  "baseline",
+  "baseline.AgentShield",
+  "baseline.CaMeL",
+  "baseline.ClawGuard",
+  "baseline.DRIFT",
+  "baseline.DynamicGuardian",
+  "baseline.MCPGuard",
+  "baseline.MELON",
+  "baseline.Pipelock",
+  "baseline.Progent",
+  "baseline.Spotlighting",
+  "baseline.StackOne",
+  "baseline.TaskShield",
+  "baseline.ToolFilter",
+]
+package-dir = { apex = "src/apex" }
+include-package-data = true
+
+[tool.setuptools.package-data]
+"apex.defender" = ["skills/**/*.md", "skills/**/*.yaml"]
+"benchmark" = ["data/**/*.json", "data/**/*.md"]
+"benchmark.registry" = ["data/**/*.json", "source/**/*.json"]
+"baseline.CaMeL" = ["policies/*.json"]
