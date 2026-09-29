@@ -1,10 +1,12 @@
 # APEX
 
-This repository contains the standalone APEX active-defense implementation.
-It intentionally excludes benchmark adapters, baseline implementations, frozen
-TaskContracts, evaluation outputs, traces, and result-merging utilities.
+Code accompanying the APEX paper. The repository contains the active-defense
+implementation together with the benchmark adapters, normalized benchmark
+inputs, trusted capability registries, baseline integrations, and evaluation
+utilities needed to reproduce the comparisons. It does not include generated
+TaskContracts or experiment run outputs.
 
-## Install
+## Installation
 
 ```bash
 python -m venv .venv
@@ -14,25 +16,38 @@ export OPENAI_API_KEY='<your-key>'
 export APEX_MODEL='<openai-compatible-model>'
 ```
 
-`OPENAI_BASE_URL` is optional for OpenAI-compatible providers. The code reads
-credentials only from environment variables.
+`OPENAI_BASE_URL` is optional for OpenAI-compatible providers. Registry
+regeneration additionally uses `pip install -e '.[registry]'`.
 
-## Run the minimal example
+## Repository map
+
+| Path | Responsibility |
+|---|---|
+| `src/apex/defender/` | APEX Contract, Receipt, PLANT, WRAP, broker, and continuation implementation |
+| `src/apex/core/` | Model boundary, evaluation protocol, aggregation, runner, and integration helpers |
+| `benchmark/adapter/` | Conversion of six benchmark releases into a common case interface |
+| `benchmark/data/` | Packaged normalized benchmark inputs |
+| `benchmark/registry/` | Trusted capability manifests, loaders, and audited registry sources |
+| `baseline/<name>/` | Isolated integration for each comparison method |
+| `scripts/` | Benchmark-data import and registry build/audit utilities |
+| `examples/quickstart.py` | Minimal standalone APEX integration |
+| `tests/` | Core and repository-invariant tests |
+
+## Minimal APEX example
 
 ```bash
 python examples/quickstart.py
 ```
 
-The example registers an operator-trusted capability manifest, synthesizes a
-TaskContract from the current user task, starts one protected episode, and
-routes an effect through `UnitBroker`. Contracts are generated at runtime; no
-precomputed contract bundle is included.
+The example registers a capability manifest, synthesizes a TaskContract from
+the current user task, starts one protected episode, and routes an effect
+through `UnitBroker`. Contracts are generated at runtime; no precomputed
+Contract bundle is included.
 
-## Core flow
+## APEX execution flow
 
 1. `Engine.perceive(...)` validates the operator-owned capability manifest.
-2. `Engine.contract(...)` asks the TaskContract Agent for the current task's
-   four-clause Contract and validates it deterministically.
+2. `Engine.contract(...)` generates and validates the current task's Contract.
 3. `UnitBroker` mediates each direct or nested capability invocation.
 4. PLANT checks model-visible carriers and commitment boundaries.
 5. WRAP closes the proposed Effect against the Contract and runtime Receipts.
@@ -41,30 +56,32 @@ precomputed contract bundle is included.
 WRAP uses semantic binding only for a Contract-declared `Derive` value and
 only when the capability manifest permits semantic support for that argument.
 Literals, defaults, Acquire projections, Conditional clauses, delegation,
-authority-bearing identities, and committed Effect returns are resolved by
-deterministic code. Conditional operator definitions live in
-`conditional_operators.py`.
+authority-bearing identities, and committed Effect returns use deterministic
+code. Conditional arity, operand types, and replay logic are centralized in
+`src/apex/defender/conditional_operators.py`.
 
-## Integrating an agent
+## Benchmark and baseline handling
 
-Treat every tool, MCP operation, or Skill operation as a capability unit:
+Packaged case descriptors can be loaded through `benchmark.adapter.adapter_for`.
+Adapters own case IDs, splits, suite labels, eligibility, and runtime payload
+translation. Trusted capability registration remains separate under
+`benchmark/registry/`; benchmark text cannot register new authority.
 
-- register its exact input schema and whether it is an observation or effect;
-- call `UnitBroker.invoke(...)` instead of invoking the implementation
-  directly;
-- expose returned observations through the broker so APEX can issue Receipts;
-- if a decision requests continuation, give the returned continuation payload
-  to a fresh recovery turn before retrying.
+`baseline/registry.py` lists the comparison methods. Each baseline keeps its
+method-specific translation and policy inside its own directory so it cannot
+silently change APEX behavior.
 
-See `examples/quickstart.py` for the smallest complete integration and
-`STRUCTURE.md` for the trust boundaries.
+`src/apex/core/protocol.py` checks evaluation coverage,
+`src/apex/core/aggregation.py` computes normalized metrics, and `scripts/`
+rebuilds benchmark descriptors and registry manifests. These utilities are
+included, but their generated results are not.
 
-## Verify
+## Verification
 
 ```bash
-python -m compileall -q src examples tests
+python -m compileall -q src benchmark baseline examples tests
 pytest
 ```
 
-Generated contracts, traces, caches, logs, runs, and results are ignored by
-Git and must remain outside the public source tree.
+Generated Contracts, results, traces, caches, logs, checkpoints, and run
+directories are ignored by Git and must remain outside the public source tree.

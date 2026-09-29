@@ -3,17 +3,14 @@
 ```text
 apex_official/
 ├── src/apex/
-│   ├── core/
-│   │   ├── client.py                 OpenAI-compatible model boundary
-│   │   ├── manifest.py               capability-manifest validation
-│   │   └── nested_effects.py         legacy nested-call adapter
+│   ├── core/                         shared model/evaluation utilities
 │   └── defender/
 │       ├── contract/                  Contract schema and compiler
 │       ├── taskcontractor.py          runtime Contract synthesis
 │       ├── memory.py                  capability/source surfaces
 │       ├── state.py                   bindings and Receipts
 │       ├── receipt_binding.py         deterministic Receipt ownership
-│       ├── conditional_operators.py   closed Conditional operator registry
+│       ├── conditional_operators.py   Conditional operator registry
 │       ├── resolver.py                clause-output resolution
 │       ├── proof.py                   Derive goals and deterministic proofs
 │       ├── plant.py                   plan-level detection
@@ -21,6 +18,15 @@ apex_official/
 │       ├── continuation.py            repair/replan outcomes
 │       ├── broker.py                  capability invocation boundary
 │       └── engine.py                  episode state machine
+├── benchmark/
+│   ├── adapter/                       benchmark-specific case translation
+│   ├── data/                          normalized benchmark inputs
+│   └── registry/
+│       ├── data/                      generated trusted manifests
+│       ├── source/                    audited registry inputs
+│       └── *.py                       loaders and attestations
+├── baseline/<name>/                   comparison-method integrations
+├── scripts/                           import/build/audit utilities
 ├── examples/quickstart.py
 └── tests/
 ```
@@ -29,8 +35,9 @@ apex_official/
 
 ```text
 trusted user task ──> TaskContract Agent ──> validated TaskContract
-operator manifest ──> Surveyor ───────────> EnvironmentPlan
-runtime outputs ────> UnitBroker ─────────> Receipts
+operator manifest ──> capability registry ─> EnvironmentPlan
+benchmark dataset ──> adapter ─────────────> untrusted episode input
+runtime outputs ────> UnitBroker ──────────> Receipts
 
 TaskContract + EnvironmentPlan + Receipts
                   │
@@ -46,17 +53,23 @@ TaskContract + EnvironmentPlan + Receipts
        allow | deny | repair | replan | approval
 ```
 
-The capability manifest is operator-owned and exists before the episode.
-Runtime text can supply data but cannot add capabilities, Effects, arguments,
-operators, or authority.
+The adapter and registry are deliberately separate. An adapter may expose
+attacker-controlled benchmark text, but only an operator-owned registry can
+create a capability or authority-bearing surface.
 
 ## Conditional operators
 
-All Conditional operand types and replay implementations are centralized in
+All Conditional arities, operand types, and replay implementations live in
 `src/apex/defender/conditional_operators.py`. To add an operator:
 
-1. add its arity, operand typing, and pure replay logic to
-   `conditional_operators.py`;
+1. add its arity, operand typing, and pure replay logic there;
 2. add deterministic tests.
 
 Conditional replay must not invoke a model or infer new authority.
+
+## Adding integrations
+
+For a benchmark, add an adapter, registry loader and manifest, then test IDs,
+splits, denominators, eligibility, and capability coverage. For a baseline,
+keep its prompt, policy, and runtime translation inside a dedicated
+`baseline/<name>/` package and register only its canonical entry point.
