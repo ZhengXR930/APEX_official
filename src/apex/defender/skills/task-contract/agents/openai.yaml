@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Contract"
+  short_description: "Compile trusted tasks into validated contracts"
+  default_prompt: "Use $task-contract to compile the trusted request and capability manifest into one validated TaskContract."
