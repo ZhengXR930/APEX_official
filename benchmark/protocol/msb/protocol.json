@@ -1,0 +1,17 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "MSB",
+  "version": "public-reachable-622",
+  "target_model": "deepseek-v4-flash",
+  "methods": [
+    "ours", "undefended", "mcp_guard", "pipelock", "stackone", "clawguard"
+  ],
+  "denominators": {"attack": 622, "attack_utility": 415, "clean_native": 13},
+  "metric_policy": {
+    "ASR": "all 622 aligned attack cases",
+    "AU": "415 officially utility-evaluable cases after excluding false_error and simulated_user categories"
+  },
+  "data_sha256": {
+    "../../data/msb/cases.json": "c9a71ae60f66af0a72595bc050f47178c835349d55b7b5c104c036a53bcd6cb4"
+  }
+}

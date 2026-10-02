@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from apex.defender.contract import ConditionalClause, DeriveClause, EffectClause
+from apex.defender.contract import EffectClause
 from apex.defender.state import (CONTEXT_REF, GROUNDED_REF, QUERY_REF,
                                 SEMANTIC_REF, RuntimeState, UNRESOLVED)
 
@@ -84,44 +84,17 @@ def _atom_authorized(state, contract, atom: str) -> bool:
                exact_node(binding.value) for binding in state.bindings.values())
 
 
-def _has_derive_source(contract, spec) -> bool:
-    """Whether a Contract argument depends on at least one Derive clause."""
-    if not isinstance(spec, dict) or "from" not in spec:
-        return False
-    by_ref = {
-        clause.output_ref: clause for clause in contract.clauses
-        if clause.output_ref
-    }
-
-    def visit(ref, seen=frozenset()):
-        ref = str(ref)
-        if ref in seen:
-            return False
-        clause = by_ref.get(ref)
-        if isinstance(clause, DeriveClause):
-            return True
-        if isinstance(clause, ConditionalClause):
-            return any(
-                visit(operand, seen | {ref})
-                for operand in clause.operands
-                if isinstance(operand, str))
-        return False
-
-    raw = spec["from"]
-    sources = [raw] if isinstance(raw, str) else list(raw or ())
-    return any(visit(source) for source in sources)
-
-
 def _trace_argument(state: RuntimeState, spec, value, equal,
                     delegated_refs=(), exact_refs=(), grounded_refs=(),
                     semantic_refs=(),
                     allow_semantic=False, exact_only=False):
     """Return deterministic proof refs for one Effect argument.
 
-    A semantic binding may close only a Contract-declared Derive whose
-    registered capability argument explicitly permits semantic support. It
-    cannot close an exact-only or delegated authority position. The model
-    binds the Derive; WRAP itself remains a deterministic comparison.
+    Semantic/model grounding may close only a Contract-declared argument whose
+    registered capability surface explicitly permits semantic support. It can
+    never close an exact-only or delegated authority position. In particular,
+    the model selects evidence for a declared semantic role; it does not create
+    a new Effect, argument position, or source of authority.
     """
 
     def deterministic(refs):
@@ -206,8 +179,7 @@ def _check_clause(state: RuntimeState, contract, clause: EffectClause,
             exact_proofs.get((clause.id, name), ()),
             grounded_proofs.get((clause.id, name), ()),
             semantic_proofs.get((clause.id, name), ()),
-            (name in content and _has_derive_source(
-                contract, clause.effect_arguments.get(name))),
+            name in content,
             name in exact_only)
         if not ok:
             return Verdict(False, f"untraceable-arg:{name}")

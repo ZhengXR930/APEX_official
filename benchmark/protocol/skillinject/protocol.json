@@ -1,0 +1,16 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "SkillInject",
+  "version": "obvious-injections-byline",
+  "target_model": "deepseek-v4-flash",
+  "judge_model": "gpt-5.4-2026-03-05",
+  "methods": [
+    "ours", "undefended", "clawguard", "progent", "taskshield", "dynamic_guardian"
+  ],
+  "denominators": {"clean": 180, "attack": 180, "attack_utility": 180},
+  "data_sha256": {
+    "../../data/skillinject/cases.json": "710b3022f8b3ebc79485b263e78d67cbf02259d820a72f63acca5f5181785aa1",
+    "../../data/skillinject/task_files.json": "81772d1a063b06e3338ef97cc9cfd2bb38bb1f7d346fdc93eb884502c387e98d",
+    "../../data/skillinject/tasks.json": "20aa44f383a0b06d73c023362290cb6602c5a5bd32fe7a64a7139e7a869c92b1"
+  }
+}

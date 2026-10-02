@@ -3,6 +3,7 @@ import json
 
 from benchmark.adapter import ADAPTERS
 from baseline.registry import BASELINES
+from apex.core.protocol import load_protocol
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,6 +56,15 @@ def test_registry_manifests_are_present():
         "skillinject/manifest.json",
     }
     assert all((data / item).is_file() for item in expected)
+
+
+def test_all_benchmark_protocols_validate_packaged_inputs():
+    root = ROOT / "benchmark" / "protocol"
+    expected = {"agentdojo", "asb_opi", "mcptox", "msb", "scr", "skillinject"}
+    found = {path.parent.name for path in root.glob("*/protocol.json")}
+    assert found == expected
+    for path in root.glob("*/protocol.json"):
+        load_protocol(path)
 
 
 def test_registry_data_contains_only_final_manifests():

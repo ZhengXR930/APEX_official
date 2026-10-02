@@ -149,7 +149,7 @@ def _redact_marker(value, paths, operands):
 class Episode:
     """Run one trusted task under the lean defense.
 
-    One Binding Agent handles Acquire ambiguity and proposal-local Derive
+    One Binding Agent handles Acquire ambiguity and proposal-local semantic
     placement. Deterministic code owns every candidate, ref, value, and closed
     operator replay.
     """
@@ -1383,10 +1383,12 @@ class Engine:
                  approval_enabled: bool = True,
                  continuation_enabled: bool = True,
                  max_replans: int = 1,
-                 continuation_explanation_agent=None):
+                 continuation_explanation_agent=None,
+                 wrap_enabled: bool = True,
+                 plant_enabled: bool = True):
         self.model = str(model) if model else ""
-        self.wrap_enabled = True
-        self.plant_enabled = True
+        self.wrap_enabled = bool(wrap_enabled)
+        self.plant_enabled = bool(plant_enabled)
         self.approval_enabled = bool(approval_enabled)
         self.continuation_enabled = bool(continuation_enabled)
         self.max_replans = max(0, int(max_replans))

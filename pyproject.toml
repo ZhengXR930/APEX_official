@@ -50,6 +50,6 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 "apex.defender" = ["skills/**/*.md", "skills/**/*.yaml"]
-"benchmark" = ["data/**/*.json", "data/**/*.md"]
+"benchmark" = ["data/**/*.json", "data/**/*.md", "protocol/**/*.json"]
 "benchmark.registry" = ["data/**/*.json", "source/**/*.json"]
 "baseline.CaMeL" = ["policies/*.json"]

@@ -396,7 +396,7 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
         self.assertTrue(verdict.ok)
         self.assertIn(SEMANTIC_REF, verdict.refs)
 
-    def test_semantic_proof_cannot_replace_an_acquire_projection(self):
+    def test_semantic_proof_closes_manifest_permitted_acquire_content(self):
         contract = TaskContract("send the observed body", [
             AcquireClause("", "read body", "read", {}, "body"),
             EffectClause("", "send body", "send", {
@@ -406,6 +406,19 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
         verdict = check_effect(
             RuntimeState(), contract, "send", {"body": "invented"},
             content={"body"},
+            semantic_proofs={key: (SEMANTIC_REF, "receipt#/body")})
+        self.assertTrue(verdict.ok)
+        self.assertEqual("traced", verdict.reason)
+
+    def test_semantic_proof_cannot_close_unmarked_acquire_argument(self):
+        contract = TaskContract("send the observed body", [
+            AcquireClause("", "read body", "read", {}, "body"),
+            EffectClause("", "send body", "send", {
+                "body": {"from": "c0.body"}}),
+        ])
+        key = (contract.clauses[1].id, "body")
+        verdict = check_effect(
+            RuntimeState(), contract, "send", {"body": "invented"},
             semantic_proofs={key: (SEMANTIC_REF, "receipt#/body")})
         self.assertFalse(verdict.ok)
         self.assertEqual("untraceable-arg:body", verdict.reason)

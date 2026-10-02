@@ -27,6 +27,7 @@ regeneration additionally uses `pip install -e '.[registry]'`.
 | `src/apex/core/` | Model boundary, evaluation protocol, aggregation, runner, and integration helpers |
 | `benchmark/adapter/` | Conversion of six benchmark releases into a common case interface |
 | `benchmark/data/` | Packaged normalized benchmark inputs |
+| `benchmark/protocol/` | Fixed denominators, method applicability, and input hashes |
 | `benchmark/registry/` | Trusted capability manifests, loaders, and audited registry sources |
 | `baseline/<name>/` | Isolated integration for each comparison method |
 | `scripts/` | Benchmark-data import and registry build/audit utilities |
@@ -53,12 +54,15 @@ Contract bundle is included.
 5. WRAP closes the proposed Effect against the Contract and runtime Receipts.
 6. Continuation returns a bounded repair, replan, approval, or abort decision.
 
-WRAP uses semantic binding only for a Contract-declared `Derive` value and
-only when the capability manifest permits semantic support for that argument.
-Literals, defaults, Acquire projections, Conditional clauses, delegation,
-authority-bearing identities, and committed Effect returns use deterministic
-code. Conditional arity, operand types, and replay logic are centralized in
-`src/apex/defender/conditional_operators.py`.
+WRAP resolves ordinary cases deterministically. If capability and literal
+constraints leave multiple compatible `Acquire` roles, the validated Binding
+Agent selects one code-issued clause ID. For a Contract-declared semantic
+argument role, it can select only code-issued evidence IDs and permitted
+compositions, and only when the capability manifest permits semantic support
+for that argument. Literals, defaults, Conditional operators, delegation,
+authority-bearing identities, and committed Effect returns remain
+deterministic. Conditional arity, operand types, and replay logic are
+centralized in `src/apex/defender/conditional_operators.py`.
 
 ## Benchmark and baseline handling
 
@@ -72,9 +76,11 @@ method-specific translation and policy inside its own directory so it cannot
 silently change APEX behavior.
 
 `src/apex/core/protocol.py` checks evaluation coverage,
-`src/apex/core/aggregation.py` computes normalized metrics, and `scripts/`
-rebuilds benchmark descriptors and registry manifests. These utilities are
-included, but their generated results are not.
+`src/apex/core/aggregation.py` computes normalized metrics, and
+`scripts/merge_results.py` rejects conflicting shards before producing one
+canonical summary. The remaining scripts rebuild benchmark descriptors and
+registry manifests. These utilities and fixed protocols are included, but
+their generated results are not.
 
 ## Verification
 

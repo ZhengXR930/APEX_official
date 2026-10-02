@@ -1,0 +1,14 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "MCPTox",
+  "version": "response-all-operator-schema-v3",
+  "target_model": "deepseek-v4-flash",
+  "judge_model": "gpt-5.4-2026-03-05",
+  "methods": [
+    "ours", "undefended", "mcp_guard", "pipelock", "stackone", "clawguard"
+  ],
+  "denominators": {"clean": 357, "attack": 1348, "attack_utility": 1348},
+  "data_sha256": {
+    "../../data/mcptox/cases.json": "790163910650e9f44d91ac03509912031b37040e2197c27cdeed4a4b7853a7db"
+  }
+}

@@ -21,6 +21,7 @@ apex_official/
 ├── benchmark/
 │   ├── adapter/                       benchmark-specific case translation
 │   ├── data/                          normalized benchmark inputs
+│   ├── protocol/                      denominators, applicability, data hashes
 │   └── registry/
 │       ├── data/                      generated trusted manifests
 │       ├── source/                    audited registry inputs
@@ -45,7 +46,7 @@ TaskContract + EnvironmentPlan + Receipts
              APEX Episode
              ├── PLANT
              ├── deterministic resolver
-             ├── semantic binding (Derive only)
+             ├── bounded semantic binding
              ├── WRAP
              └── continuation
                   │

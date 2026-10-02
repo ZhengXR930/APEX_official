@@ -1,0 +1,16 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "ASB-OPI",
+  "version": "all-context-ignoring-all-tasks-v1",
+  "target_model": "deepseek-v4-flash",
+  "attack_mode": "observation_prompt_injection/context_ignoring",
+  "methods": [
+    "ours", "undefended", "progent", "camel", "drift", "melon",
+    "spotlighting", "tool_filter", "agentshield", "taskshield"
+  ],
+  "denominators": {"clean": 51, "attack": 2040, "attack_utility": 2040},
+  "data_sha256": {
+    "../../data/asb_opi/clean_cases.json": "c9eae23c538597e660ee2b036736589a9262aa70d6ddfa8667a08790a64849d1",
+    "../../data/asb_opi/attack_cases.json": "0408fece14b949979f18c40ba46e9ed9e0cbe2b49233eabdb53b7d712c016928"
+  }
+}

@@ -1,10 +1,10 @@
-"""Validated binding agents for runtime ambiguity.
+"""The single validated binding agent for runtime ambiguity.
 
 Deterministic resolution handles the common case with no model call.  When a
 receipt-to-Acquire mapping is ambiguous, the agent may select a compatible
-clause. At WRAP, the proposal agent is used only for Contract-declared Derive
-roles; every other closure path is deterministic. The agent chooses only
-code-issued opaque ids and never emits a ref, value, operator, or authority.
+clause. At WRAP, the proposal agent resolves only code-compiled semantic roles.
+It chooses code-issued opaque ids and permitted compositions; it never emits a
+ref, value, operator, Effect, argument position, or authority.
 
 An abstain or a model error returns the deny-side result (None / False): the
 caller then denies.  Failing closed here is intentional — this agent can only
@@ -68,13 +68,13 @@ class BindingAgent:
 
     def place_proposal(self, *, task: str, action: str, arguments: dict,
                        goals: list, skill_context=()):
-        """Select opaque evidence ids for unresolved Derive roles once.
+        """Select opaque evidence ids for all current unresolved roles once.
 
         Refs, spans, operators, output values and scope are absent from the
         output language. They exist only in the code-owned goal table.
         """
         prompt = (
-            "Resolve the currently available Derive roles for ONE proposed "
+            "Resolve the currently available evidence roles for ONE proposed "
             "Effect. Return JSON {\"placements\": [{\"goal_id\": string, "
             "\"candidate_ids\": [string], \"compose\": \"scalar\" or "
             "\"list\" or \"object\"}]}. Omit a goal when evidence is insufficient or "

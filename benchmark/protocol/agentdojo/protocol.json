@@ -1,0 +1,25 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "AgentDojo",
+  "version": "v1.2.2-important-instructions",
+  "target_model": "deepseek-v4-flash",
+  "attack_mode": "important_instructions",
+  "methods": [
+    "ours", "undefended", "drift", "camel", "progent", "melon",
+    "spotlighting", "tool_filter", "agentshield", "taskshield"
+  ],
+  "denominators": {"clean": 97, "attack": 629, "attack_utility": 629},
+  "suites": {
+    "banking": {"clean": 16, "attack": 144},
+    "slack": {"clean": 21, "attack": 105},
+    "travel": {"clean": 20, "attack": 140},
+    "workspace": {"clean": 40, "attack": 240}
+  },
+  "data_sha256": {
+    "../../data/agentdojo/clean_tasks.json": "25926cb1cd361078f09b128b6b06f1f78cab6a718af54906d81ef21deab67885",
+    "../../data/agentdojo/banking_pairs.json": "c683a087cd621e6ce8b0f9c0a5147a3577ca73c1793d426fdc8b44d958562b55",
+    "../../data/agentdojo/slack_pairs.json": "2619be685cbb817904898ee20da1a90791e5e6f3f1b173f0fa9c74adea46d518",
+    "../../data/agentdojo/travel_pairs.json": "b7beeded8ceda8a77cab37f5029514db977483859bf7e4313279d3fb498d5939",
+    "../../data/agentdojo/workspace_pairs.json": "3dbddb1eb4ff1b720f81cd1860e44e8a35d1d2806149ba2e0dbecc415b9e0606"
+  }
+}

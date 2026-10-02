@@ -1,0 +1,22 @@
+{
+  "schema": "benchmark-evaluation-protocol-v1",
+  "benchmark": "SCR",
+  "version": "three-suite-v1",
+  "target_model": "deepseek-v4-flash",
+  "methods": [
+    "ours", "undefended", "clawguard", "progent", "taskshield", "dynamic_guardian"
+  ],
+  "denominators": {
+    "capflow": {"clean": 150, "attack": 150, "attack_utility": 150},
+    "authblur": {"clean": 116, "attack": 116, "attack_utility": 116},
+    "trustlift": {"clean": 401, "attack": 401, "attack_utility": 401}
+  },
+  "suite_methods": {
+    "capflow": ["ours", "undefended", "clawguard", "progent", "taskshield", "dynamic_guardian"],
+    "authblur": ["ours", "undefended", "taskshield", "dynamic_guardian"],
+    "trustlift": ["ours", "undefended", "clawguard", "progent", "taskshield", "dynamic_guardian"]
+  },
+  "data_sha256": {
+    "../../data/scr/cases.json": "48178806938cb1ce52bad89e28eb0fbce4c576d7e592f5b43c88a59a8d313c17"
+  }
+}
