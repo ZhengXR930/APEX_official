@@ -3,8 +3,8 @@
 Code accompanying the APEX paper. The repository contains the active-defense
 implementation together with the benchmark adapters, normalized benchmark
 inputs, trusted capability registries, baseline integrations, and evaluation
-utilities needed to reproduce the comparisons. It does not include generated
-TaskContracts or experiment run outputs.
+utilities that define the comparisons. It does not include generated
+TaskContracts, experiment run outputs, or third-party benchmark checkouts.
 
 ## Installation
 
@@ -74,6 +74,11 @@ translation. Trusted capability registration remains separate under
 `baseline/registry.py` lists the comparison methods. Each baseline keeps its
 method-specific translation and policy inside its own directory so it cannot
 silently change APEX behavior.
+
+The repository vendors the APEX-side handling, normalized inputs, and registry
+surfaces for every reported benchmark. A full native rerun additionally needs
+the corresponding upstream benchmark/baseline package and its service
+credentials; those third-party repositories are intentionally not copied here.
 
 `src/apex/core/protocol.py` checks evaluation coverage,
 `src/apex/core/aggregation.py` computes normalized metrics, and
