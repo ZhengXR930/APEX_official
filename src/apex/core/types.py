@@ -24,6 +24,10 @@ class RunRequest:
     output: Path
     workers: int = 1
     resume: bool = False
+    split: str | None = None
+    limit: int | None = None
+    driver: str | None = None
+    preflight: bool = False
     extra: tuple[str, ...] = ()
 
 

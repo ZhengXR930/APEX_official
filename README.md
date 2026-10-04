@@ -24,8 +24,10 @@ regeneration additionally uses `pip install -e '.[registry]'`.
 | Path | Responsibility |
 |---|---|
 | `src/apex/defender/` | APEX Contract, Receipt, PLANT, WRAP, broker, and continuation implementation |
+| `src/apex/runtime.py` | Framework-neutral Tool/MCP/Skill execution bridge |
 | `src/apex/core/` | Model boundary, evaluation protocol, aggregation, runner, and integration helpers |
 | `benchmark/adapter/` | Conversion of six benchmark releases into a common case interface |
+| `benchmark/execution/` | Common native-driver API and offline integration preflight |
 | `benchmark/data/` | Packaged normalized benchmark inputs |
 | `benchmark/protocol/` | Fixed denominators, method applicability, and input hashes |
 | `benchmark/registry/` | Trusted capability manifests, loaders, and audited registry sources |
@@ -79,6 +81,44 @@ The repository vendors the APEX-side handling, normalized inputs, and registry
 surfaces for every reported benchmark. A full native rerun additionally needs
 the corresponding upstream benchmark/baseline package and its service
 credentials; those third-party repositories are intentionally not copied here.
+
+Every native benchmark driver receives a `CaseContext`. Calling
+`context.protected_runtime(task)` generates a fresh Contract for that task and
+returns the same protected Tool/MCP/Skill state machine used by the benchmark
+integrations: `invoke(...)` mediates calls and records Receipts, while
+`response(...)` checks the final commitment. A driver must return one
+`EpisodeResult` (or its dictionary form); the common runner validates canonical
+case identity, checkpoints atomically, supports resume, and never reads a
+generated Contract bundle.
+
+The complete public execution path can be checked without credentials or an
+upstream checkout. This validates every packaged protocol and registry, starts
+real APEX episodes, and verifies that an effect absent from the Contract is
+denied before its implementation runs:
+
+```bash
+apex-benchmark inspect --benchmark all --samples 2
+```
+
+Run native benchmark episodes by supplying the benchmark checkout's thin
+driver callable:
+
+```bash
+apex-benchmark run \
+  --benchmark agentdojo \
+  --method ours \
+  --target-model "$APEX_MODEL" \
+  --defense-model "$APEX_MODEL" \
+  --driver my_agentdojo_bridge:run_case \
+  --split attack --limit 2 \
+  --output outputs/agentdojo-sample.json
+```
+
+The driver is the only benchmark-owned layer: it constructs the native
+environment, performs agent turns, executes native tools through
+`ProtectedRuntime.invoke`, and calls the official scorer. This keeps upstream
+code and credentials outside APEX without replacing benchmark execution with a
+simulator.
 
 `src/apex/core/protocol.py` checks evaluation coverage,
 `src/apex/core/aggregation.py` computes normalized metrics, and

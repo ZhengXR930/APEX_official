@@ -7,6 +7,7 @@ from .base import BenchmarkCase, DatasetAdapter
 
 class ASBOPIAdapter(DatasetAdapter):
     benchmark = "ASB-OPI"
+    slug = "asb_opi"
 
     def cases(self, split=None):
         for condition, filename in (("clean", "clean_cases.json"),

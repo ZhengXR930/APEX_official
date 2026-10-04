@@ -3,13 +3,31 @@
 from pathlib import Path
 import re
 
-from benchmark.registry.schema import load_environment
+from benchmark.registry.schema import load_bundle, load_environment
 
 DEFAULT_PATH = Path(__file__).with_name("data") / "mcptox" / "manifest.json"
 
 
 def load(server: str, path=DEFAULT_PATH):
-    return load_environment(path, server, benchmark="MCPTox")
+    """Load one server, accepting the dataset's display-name spelling.
+
+    The official MCPTox JSON uses labels such as ``Claude Post`` and
+    ``OP.GG`` while the audited registry uses filesystem-safe environment
+    identifiers. Resolution is unique and purely syntactic; no task or attack
+    content participates.
+    """
+    raw = load_bundle(path, benchmark="MCPTox")
+    requested = _environment_key(server)
+    matches = [name for name in raw["environments"]
+               if _environment_key(name) == requested]
+    if len(matches) != 1:
+        raise KeyError(
+            f"MCPTox server {server!r} resolves to {len(matches)} registries")
+    return load_environment(path, matches[0], benchmark="MCPTox")
+
+
+def _environment_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", str(value).casefold()).strip("_")
 
 
 def canonical(server: str, name: str) -> str:

@@ -17,6 +17,9 @@ dependencies = [
 test = ["pytest>=8.0"]
 registry = ["agentdojo==0.1.35"]
 
+[project.scripts]
+apex-benchmark = "benchmark.execution.__main__:main"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
@@ -29,6 +32,7 @@ packages = [
   "apex.defender.contract",
   "benchmark",
   "benchmark.adapter",
+  "benchmark.execution",
   "benchmark.registry",
   "baseline",
   "baseline.AgentShield",

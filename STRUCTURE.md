@@ -4,6 +4,7 @@
 apex_official/
 ├── src/apex/
 │   ├── core/                         shared model/evaluation utilities
+│   ├── runtime.py                    common Tool/MCP/Skill execution bridge
 │   └── defender/
 │       ├── contract/                  Contract schema and compiler
 │       ├── taskcontractor.py          runtime Contract synthesis
@@ -20,6 +21,7 @@ apex_official/
 │       └── engine.py                  episode state machine
 ├── benchmark/
 │   ├── adapter/                       benchmark-specific case translation
+│   ├── execution/                     native-driver API and offline preflight
 │   ├── data/                          normalized benchmark inputs
 │   ├── protocol/                      denominators, applicability, data hashes
 │   └── registry/
@@ -71,6 +73,9 @@ Conditional replay must not invoke a model or infer new authority.
 ## Adding integrations
 
 For a benchmark, add an adapter, registry loader and manifest, then test IDs,
-splits, denominators, eligibility, and capability coverage. For a baseline,
-keep its prompt, policy, and runtime translation inside a dedicated
-`baseline/<name>/` package and register only its canonical entry point.
+splits, denominators, eligibility, and capability coverage. A native driver is
+a callable accepting `benchmark.execution.CaseContext`; it owns upstream setup
+and scoring and routes every capability through `context.protected_runtime`.
+For a baseline, keep its prompt, policy, and runtime translation inside a
+dedicated `baseline/<name>/` package and register only its canonical entry
+point.

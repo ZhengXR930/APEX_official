@@ -2,7 +2,9 @@
 
 from .defender.broker import BrokerResult, UnitBroker
 from .defender.engine import Decision, Engine, Episode
+from .runtime import ProtectedRuntime, RuntimeResult
 
 __all__ = [
-    "BrokerResult", "Decision", "Engine", "Episode", "UnitBroker",
+    "BrokerResult", "Decision", "Engine", "Episode", "ProtectedRuntime",
+    "RuntimeResult", "UnitBroker",
 ]

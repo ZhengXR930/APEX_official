@@ -7,6 +7,7 @@ from .base import BenchmarkCase, DatasetAdapter
 
 class MSBAdapter(DatasetAdapter):
     benchmark = "MSB"
+    slug = "msb"
     _excluded = frozenset({
         "false_error", "simulated_user", "prompt_injection-simulated_user",
         "prompt_injection-false_error",

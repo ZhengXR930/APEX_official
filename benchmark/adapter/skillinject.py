@@ -7,6 +7,7 @@ from .base import BenchmarkCase, DatasetAdapter
 
 class SkillInjectAdapter(DatasetAdapter):
     benchmark = "SkillInject"
+    slug = "skillinject"
 
     def cases(self, split=None):
         rows = json.loads(self.json_path("cases.json").read_text())

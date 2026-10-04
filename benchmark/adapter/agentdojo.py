@@ -8,6 +8,7 @@ from .base import BenchmarkCase, DatasetAdapter
 
 class AgentDojoAdapter(DatasetAdapter):
     benchmark = "AgentDojo"
+    slug = "agentdojo"
 
     def __init__(self, data_root=None):
         packaged = Path(__file__).resolve().parents[1] / "data" / "agentdojo"

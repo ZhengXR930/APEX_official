@@ -1462,6 +1462,23 @@ class Engine:
             list(skill_manifests or ()))
         return self.plan
 
+    def attach_plan(self, plan):
+        """Attach an audited, operator-owned :class:`EnvironmentPlan`.
+
+        Benchmark registries are compiled independently of an episode. Native
+        Tool, MCP, and Skill runtimes can therefore load that trusted plan
+        directly instead of rebuilding authority from model-visible text.
+        This bridge is deterministic and performs no model call.
+        """
+        from apex.core.manifest import validate_plan
+        from apex.defender.memory import EnvironmentPlan
+
+        if not isinstance(plan, EnvironmentPlan):
+            raise TypeError("attach_plan() requires an EnvironmentPlan")
+        validate_plan(plan, plan.id or "APEX")
+        self.plan = plan
+        return self.plan
+
     def perceive_skills(self, skill_files, capability_manifest,
                         plant_carriers=(), skill_manifests=()):
         """Register Tool-local boundaries from one or more installed Skills."""

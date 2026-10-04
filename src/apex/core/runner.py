@@ -7,7 +7,7 @@ from apex.core.adapter import BenchmarkAdapter
 from apex.core.types import RunRequest
 
 
-class BaselineRunner:
+class MethodRunner:
     def __init__(self, method: str):
         self.method = method
 
@@ -17,3 +17,8 @@ class BaselineRunner:
 
     def run(self, adapter: BenchmarkAdapter, request: RunRequest) -> None:
         subprocess.run(self.command(adapter, request), check=True)
+
+
+# Kept for callers of the first public artifact. The runner is method-neutral;
+# each benchmark protocol decides whether a method is applicable.
+BaselineRunner = MethodRunner

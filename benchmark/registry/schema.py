@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+from functools import lru_cache
 from pathlib import Path
 import re
 from typing import Any
@@ -145,8 +146,16 @@ def bundle(benchmark: str, environments: dict[str, dict], *,
     }
 
 
+@lru_cache(maxsize=32)
+def _read_bundle(path: str, modified_ns: int, size: int) -> dict:
+    del modified_ns, size
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
 def load_bundle(path: str | Path, *, benchmark: str | None = None) -> dict:
-    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    target = Path(path).expanduser().resolve()
+    stat = target.stat()
+    raw = _read_bundle(str(target), stat.st_mtime_ns, stat.st_size)
     if (raw.get("schema") != SCHEMA or
             not isinstance(raw.get("capability_units"), dict) or
             not isinstance(raw.get("environments"), dict) or

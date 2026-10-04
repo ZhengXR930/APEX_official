@@ -5,6 +5,7 @@ from .base import BenchmarkCase, DatasetAdapter
 
 class SCRAdapter(DatasetAdapter):
     benchmark = "SCR"
+    slug = "scr"
 
     def cases(self, split=None):
         import json

@@ -12,6 +12,7 @@ def _clean_id(server: str, query: str) -> str:
 
 class MCPToxAdapter(DatasetAdapter):
     benchmark = "MCPTox"
+    slug = "mcptox"
 
     def cases(self, split=None):
         data = json.loads(self.json_path("cases.json").read_text(encoding="utf-8"))

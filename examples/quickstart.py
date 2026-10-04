@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import os
 
-from apex import Engine, UnitBroker
+from apex import Engine, ProtectedRuntime
 
 
 TASK = 'Save the exact text "status: ready" as a note.'
@@ -40,15 +40,15 @@ def main() -> None:
         raise SystemExit("Set APEX_MODEL to an OpenAI-compatible model name.")
 
     engine = Engine(model)
-    engine.perceive(CAPABILITIES)
+    plan = engine.perceive(CAPABILITIES)
     contract = engine.contract(TASK)
 
-    with engine.start(contract, task_id="quickstart") as episode:
-        broker = UnitBroker(episode, CAPABILITIES)
-        result = broker.invoke(
+    with ProtectedRuntime(
+            engine, plan, contract, task_id="quickstart") as runtime:
+        result = runtime.invoke(
             "save_note",
             ARGUMENTS,
-            lambda: save_note(ARGUMENTS),
+            save_note,
         )
 
     print({
