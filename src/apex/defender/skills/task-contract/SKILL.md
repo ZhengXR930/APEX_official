@@ -64,6 +64,13 @@ Name one semantic transformation that requires no tool call.
 
 `from` contains only `task`, `runtime-context` when registered, or earlier Clause outputs. State what the output means in `instruction`; never emit an unexplained from/to edge. Extraction, summarization, formatting, and task-bounded semantic roles are derives.
 
+Before emitting a Derive, include every trusted task or runtime input needed to
+establish its output. An update based on separately acquired instructions and
+current state must depend on both; never derive a final updated value from an
+instruction-only source when its meaning depends on existing state. Use a
+registered Conditional whenever the transformation is one of its deterministic
+operators.
+
 A task-root Derive is not a constructor for an exact wire value. When the
 trusted request completely specifies a boolean, integer, number, closed enum,
 array, or object argument, put that typed value directly in the consuming

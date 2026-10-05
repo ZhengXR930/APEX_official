@@ -639,7 +639,8 @@ def compile_goals(state: RuntimeState, contract, action, arguments, surface,
                     continue
                 allow_semantic = bool(
                     direct and not delegated and surface is not None and
-                    surface.accepts_semantic_support(name))
+                    isinstance(clause, DeriveClause) and
+                    not surface.requires_exact_binding(name))
                 oversized = sum(len(stable(row["value"])) for row in rows) > \
                     _PUBLIC_GOAL_BUDGET
                 if allow_semantic and oversized:

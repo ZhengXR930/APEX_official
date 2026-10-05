@@ -917,7 +917,7 @@ class Episode:
         required = frozenset(getattr(surface, "required", ()) or ())
         content = frozenset(
             name for name in (getattr(surface, "arguments", ()) or ())
-            if surface is not None and surface.accepts_semantic_support(name))
+            if surface is not None and surface.carries_open_content(name))
         atoms = {
             name: authority_atoms(
                 arguments.get(name), surface.authority_grammars(name))
@@ -1244,7 +1244,7 @@ class Episode:
                                 (clause.id, name), authority_refs)
             content = frozenset(
                 name for name in (getattr(surface, "arguments", ()) or ())
-                if surface is not None and surface.accepts_semantic_support(name))
+                if surface is not None and surface.carries_open_content(name))
             atoms = {
                 name: authority_atoms(
                     arguments.get(name), surface.authority_grammars(name))

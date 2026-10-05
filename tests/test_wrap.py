@@ -365,11 +365,11 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
                  (SEMANTIC_REF, "receipt#")}
         verdict = check_effect(
             RuntimeState(), contract, "invite", {"email": "eve@example.com"},
-            semantic_proofs=proof)
+            semantic_proofs=proof, exact_only={"email"})
         self.assertFalse(verdict.ok)
         self.assertEqual("untraceable-arg:email", verdict.reason)
 
-    def test_grounded_proof_cannot_close_effect_argument(self):
+    def test_grounded_proof_cannot_close_exact_only_effect_argument(self):
         contract = TaskContract("schedule the matching device", [
             DeriveClause("", "identify matching device", ("task",), "device"),
             EffectClause("", "schedule", "schedule_device", {
@@ -378,7 +378,8 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
         key = (contract.clauses[1].id, "device")
         verdict = check_effect(
             RuntimeState(), contract, "schedule_device", {"device": "d-8"},
-            grounded_proofs={key: (GROUNDED_REF, "receipt#/device")})
+            grounded_proofs={key: (GROUNDED_REF, "receipt#/device")},
+            exact_only={"device"})
         self.assertFalse(verdict.ok)
         self.assertEqual("untraceable-arg:device", verdict.reason)
 
@@ -396,7 +397,7 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
         self.assertTrue(verdict.ok)
         self.assertIn(SEMANTIC_REF, verdict.refs)
 
-    def test_semantic_proof_closes_manifest_permitted_acquire_content(self):
+    def test_semantic_proof_cannot_close_acquire_content(self):
         contract = TaskContract("send the observed body", [
             AcquireClause("", "read body", "read", {}, "body"),
             EffectClause("", "send body", "send", {
@@ -407,8 +408,8 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
             RuntimeState(), contract, "send", {"body": "invented"},
             content={"body"},
             semantic_proofs={key: (SEMANTIC_REF, "receipt#/body")})
-        self.assertTrue(verdict.ok)
-        self.assertEqual("traced", verdict.reason)
+        self.assertFalse(verdict.ok)
+        self.assertEqual("untraceable-arg:body", verdict.reason)
 
     def test_semantic_proof_cannot_close_unmarked_acquire_argument(self):
         contract = TaskContract("send the observed body", [

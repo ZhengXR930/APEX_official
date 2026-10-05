@@ -244,10 +244,15 @@ class CapabilitySurface:
         return tuple(pointer for pointer, kind in self.output_types
                      if kind == "identity")
 
-    def accepts_semantic_support(self, argument: str) -> bool:
+    def carries_open_content(self, argument: str) -> bool:
+        """Whether the argument may contain embedded authority atoms."""
         kind = self.argument_type(argument)
         return (kind in {"natural_language", "code", "path"} or
                 kind.startswith("code/"))
+
+    def requires_exact_binding(self, argument: str) -> bool:
+        """Return the manifest-declared exception to Derive binding."""
+        return self.argument_type(argument) in {"identity", "url", "email"}
 
     def authority_grammars(self, argument: str) -> tuple[str, ...]:
         # Natural-language endpoints can launder authority.  Machine text is

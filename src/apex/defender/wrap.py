@@ -11,7 +11,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from apex.defender.contract import EffectClause
+from apex.defender.contract import (ConditionalClause, DeriveClause,
+                                    EffectClause, spec_sources)
 from apex.defender.state import (CONTEXT_REF, GROUNDED_REF, QUERY_REF,
                                 SEMANTIC_REF, RuntimeState, UNRESOLVED)
 
@@ -90,11 +91,10 @@ def _trace_argument(state: RuntimeState, spec, value, equal,
                     allow_semantic=False, exact_only=False):
     """Return deterministic proof refs for one Effect argument.
 
-    Semantic/model grounding may close only a Contract-declared argument whose
-    registered capability surface explicitly permits semantic support. It can
-    never close an exact-only or delegated authority position. In particular,
-    the model selects evidence for a declared semantic role; it does not create
-    a new Effect, argument position, or source of authority.
+    Semantic/model grounding may close only a Contract-declared Derive role.
+    It can never close an exact-only or delegated authority position. The model
+    selects evidence for that role; it does not create a new Effect, argument
+    position, or source of authority.
     """
 
     def deterministic(refs):
@@ -142,6 +142,28 @@ def _trace_argument(state: RuntimeState, spec, value, equal,
     return (equal(spec, value), (QUERY_REF,))
 
 
+def _spec_has_derive(contract, spec) -> bool:
+    """Whether an Effect role is semantically defined by a Derive."""
+    if not isinstance(spec, dict) or set(spec) != {"from"}:
+        return False
+    by_ref = {clause.output_ref: clause for clause in contract.clauses
+              if clause.output_ref is not None}
+
+    def visit(ref, seen):
+        ref = str(ref)
+        if ref in seen:
+            return False
+        clause = by_ref.get(ref)
+        if isinstance(clause, DeriveClause):
+            return True
+        if isinstance(clause, ConditionalClause):
+            return any(visit(source, seen | {ref})
+                       for source in clause.operand_refs)
+        return False
+
+    return any(visit(source, set()) for source in spec_sources(spec))
+
+
 def _check_clause(state: RuntimeState, contract, clause: EffectClause,
                   arguments: dict, required, content, content_atoms,
                   delegated_proofs, exact_proofs, grounded_proofs,
@@ -179,7 +201,7 @@ def _check_clause(state: RuntimeState, contract, clause: EffectClause,
             exact_proofs.get((clause.id, name), ()),
             grounded_proofs.get((clause.id, name), ()),
             semantic_proofs.get((clause.id, name), ()),
-            name in content,
+            _spec_has_derive(contract, clause.effect_arguments.get(name)),
             name in exact_only)
         if not ok:
             return Verdict(False, f"untraceable-arg:{name}")

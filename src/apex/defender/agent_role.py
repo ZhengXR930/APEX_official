@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import inspect
 import json
 import threading
 
@@ -98,10 +99,11 @@ def run_typed_agent(*, name: str, model: str, prompt: str,
             is_final_output=bool(accepted),
             final_output="accepted" if accepted else None)
 
+    sdk_model = agent_sdk_model(model)
     agent = Agent(
         name=name,
         instructions=role_instructions,
-        model=agent_sdk_model(model),
+        model=sdk_model,
         tools=[submit_tool],
         model_settings=ModelSettings(
             temperature=None if model in _NO_TEMP else 0.0,
@@ -111,9 +113,25 @@ def run_typed_agent(*, name: str, model: str, prompt: str,
     set_tracing_disabled(True)
 
     async def execute():
-        return await asyncio.wait_for(
-            Runner.run(agent, prompt, max_turns=6),
-            timeout=max(1.0, float(timeout_seconds)))
+        try:
+            return await asyncio.wait_for(
+                Runner.run(agent, prompt, max_turns=6),
+                timeout=max(1.0, float(timeout_seconds)))
+        finally:
+            # agent_sdk_model deliberately returns a fresh async client because
+            # synchronous adapters may execute successive roles on distinct
+            # event loops. Close that client before this role's loop exits;
+            # otherwise httpx finalization later tries to use a closed loop.
+            client = getattr(sdk_model, "_client", None)
+            close = getattr(client, "close", None)
+            if callable(close):
+                try:
+                    pending = close()
+                    if inspect.isawaitable(pending):
+                        await pending
+                except Exception:
+                    # Cleanup must not replace the validated role result.
+                    pass
 
     run_result = {}
     try:
