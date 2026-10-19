@@ -1,6 +1,6 @@
 # APEX
 
-Code accompanying an anonymous paper submission. The repository separates the
+The repository separates the
 APEX defender, benchmark data normalization, trusted capability manifests, and
 comparison-method integrations so that each layer can be inspected independently.
 
