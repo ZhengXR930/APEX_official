@@ -252,6 +252,14 @@ to approve one. Copy the date phrase byte-for-byte from the trusted task:
 These constraints narrow an already requested Effect. They never supply a
 date absent from the task, and WRAP replays them in code without a model.
 
+Do not use this task-date form when the date is not a task literal. If the user
+explicitly delegates the date to a named runtime source (for example, “based
+on the emails about it”), represent that source with Acquire/Derive clauses and
+bind the Effect argument with `from`; the resulting value must trace back to
+the exact runtime Receipt. If neither the task, registered runtime context, nor
+an explicitly delegated Receipt supplies the date, leave the Effect
+unsupported and request clarification rather than inventing a date.
+
 ## Preserve the authorization boundary
 
 - Use Acquire only for information a requested outcome needs; do not predict exploratory calls.
