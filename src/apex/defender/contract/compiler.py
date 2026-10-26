@@ -6,6 +6,7 @@ from apex.defender.conditional_operators import (
 )
 
 from .model import is_clause_ref
+from .constraints import validate_constraint_spec
 
 
 _EXACT_SCHEMA_TYPES = frozenset({
@@ -256,8 +257,17 @@ def validate_contract(data, trusted_task, actions, environment_sources,
             return len(operands) == 3 and operand_closed(operands[0])
         return False
 
-    def references(spec, prefix, *, effect=False):
+    def references(spec, prefix, *, effect=False, argument_names=()):
         fields = set(spec) if isinstance(spec, dict) else set()
+        if fields == {"constraint"}:
+            if not effect:
+                errors.append(prefix + " constraints are Effect-only")
+                return ()
+            error = validate_constraint_spec(
+                spec, trusted_task, argument_names)
+            if error:
+                errors.append(prefix + " " + error)
+            return ()
         if fields == {"from", "delegated"}:
             if not effect or spec.get("delegated") is not True:
                 errors.append(prefix + " invalid delegation")
@@ -416,7 +426,8 @@ def validate_contract(data, trusted_task, actions, environment_sources,
         role_uses = {}
         for argument, value in arguments.items():
             refs = references(value, prefix + "." + str(argument),
-                              effect=(kind == "effect"))
+                              effect=(kind == "effect"),
+                              argument_names=arguments)
             if isinstance(value, dict) and set(value) == {"literal"}:
                 literal = value["literal"]
                 schema = argument_schemas.get(name, {}).get(argument, {})
@@ -508,6 +519,22 @@ def task_contract_tool_schema():
                  "minItems": 1}]},
             "delegated": {"type": "boolean", "const": True}},
          "required": ["from", "delegated"], "additionalProperties": False},
+        {"type": "object", "properties": {"constraint": {"oneOf": [
+            {"type": "object", "properties": {
+                "operator": {"type": "string",
+                             "enum": ["datetime_on_task_date"]},
+                "task_text": {"type": "string"}},
+             "required": ["operator", "task_text"],
+             "additionalProperties": False},
+            {"type": "object", "properties": {
+                "operator": {"type": "string",
+                             "enum": ["datetime_after_argument"]},
+                "argument": {"type": "string"},
+                "max_seconds": {"type": "integer", "minimum": 1,
+                                "maximum": 86400}},
+             "required": ["operator", "argument", "max_seconds"],
+             "additionalProperties": False}
+        ]}}, "required": ["constraint"], "additionalProperties": False},
     ]}
     arguments = {"type": "object", "additionalProperties": argument}
     common = {"id": {"type": "string"}, "instruction": {"type": "string"}}

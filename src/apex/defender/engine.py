@@ -15,6 +15,7 @@ from dataclasses import dataclass, field
 from apex.defender.contract import (AcquireClause, ConditionalClause,
                                         DeriveClause, EffectClause,
                                         spec_sources)
+from apex.defender.contract.constraints import constraint_matches
 from apex.defender.continuation import (REPAIR, REPLAN,
                                        ContinuationController)
 from apex.defender.receipt_binding import bind_acquire, bind_effect_return
@@ -1095,6 +1096,12 @@ class Episode:
                 if isinstance(spec, dict) and set(spec) == {"literal"}:
                     compatible = argument_values_equal(
                         surface, name, spec["literal"], arguments[name])
+                    if not compatible:
+                        break
+                elif (isinstance(spec, dict) and
+                      set(spec) == {"constraint"}):
+                    compatible = constraint_matches(
+                        spec, arguments[name], arguments)
                     if not compatible:
                         break
                 elif (isinstance(spec, dict) and

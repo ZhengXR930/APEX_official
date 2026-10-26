@@ -208,3 +208,58 @@ def test_closed_conditional_can_select_identity_effect_arg():
         {"configure_rule": {"target_id": {"type": "string"}}},
         output_schema, {"configure_rule": {"target_id": "identity"}})
     assert errors == []
+
+
+def _validate_calendar_contract(task, clauses):
+    arguments = {"start_time", "end_time"}
+    schemas = {
+        "start_time": {"type": "string", "format": "date-time"},
+        "end_time": {"type": "string", "format": "date-time"},
+    }
+    return validate_contract(
+        {"task": task, "clauses": clauses}, task,
+        {"create_calendar_event"}, {"task"},
+        {"create_calendar_event": arguments},
+        {"create_calendar_event": arguments}, set(), set(),
+        {"create_calendar_event": schemas}, {})
+
+
+def test_effect_accepts_deterministic_datetime_constraints():
+    task = "Add an event on the 14th of November."
+    errors = _validate_calendar_contract(task, [{
+        "id": "c0", "type": "effect",
+        "instruction": "Create the event on the requested date",
+        "action": "create_calendar_event",
+        "arguments": {
+            "start_time": {"constraint": {
+                "operator": "datetime_on_task_date",
+                "task_text": "14th of November",
+            }},
+            "end_time": {"constraint": {
+                "operator": "datetime_after_argument",
+                "argument": "start_time",
+                "max_seconds": 86400,
+            }},
+        },
+    }])
+    assert errors == []
+
+
+def test_constraint_date_must_be_exact_trusted_task_span():
+    task = "Add an event on the 14th of November."
+    errors = _validate_calendar_contract(task, [{
+        "id": "c0", "type": "effect", "instruction": "Create event",
+        "action": "create_calendar_event",
+        "arguments": {
+            "start_time": {"constraint": {
+                "operator": "datetime_on_task_date",
+                "task_text": "15th of November",
+            }},
+            "end_time": {"constraint": {
+                "operator": "datetime_after_argument",
+                "argument": "start_time",
+                "max_seconds": 86400,
+            }},
+        },
+    }])
+    assert any("not an exact trusted-task span" in error for error in errors)

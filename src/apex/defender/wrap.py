@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 
 from apex.defender.contract import (ConditionalClause, DeriveClause,
                                     EffectClause, spec_sources)
+from apex.defender.contract.constraints import constraint_matches
 from apex.defender.state import (CONTEXT_REF, GROUNDED_REF, QUERY_REF,
                                 SEMANTIC_REF, RuntimeState, UNRESOLVED)
 
@@ -194,15 +195,21 @@ def _check_clause(state: RuntimeState, contract, clause: EffectClause,
     for name, value in arguments.items():
         if name in defaulted:
             continue
-        ok, proof_refs = _trace_argument(
-            state, clause.effect_arguments.get(name), value,
-            lambda left, right: equal(name, left, right),
-            delegated_proofs.get((clause.id, name), ()),
-            exact_proofs.get((clause.id, name), ()),
-            grounded_proofs.get((clause.id, name), ()),
-            semantic_proofs.get((clause.id, name), ()),
-            _spec_has_derive(contract, clause.effect_arguments.get(name)),
-            name in exact_only)
+        spec = clause.effect_arguments.get(name)
+        if isinstance(spec, dict) and set(spec) == {"constraint"}:
+            ok = (name not in exact_only and
+                  constraint_matches(spec, value, arguments))
+            proof_refs = (QUERY_REF,) if ok else ()
+        else:
+            ok, proof_refs = _trace_argument(
+                state, spec, value,
+                lambda left, right: equal(name, left, right),
+                delegated_proofs.get((clause.id, name), ()),
+                exact_proofs.get((clause.id, name), ()),
+                grounded_proofs.get((clause.id, name), ()),
+                semantic_proofs.get((clause.id, name), ()),
+                _spec_has_derive(contract, spec),
+                name in exact_only)
         if not ok:
             return Verdict(False, f"untraceable-arg:{name}")
         refs.extend(proof_refs)

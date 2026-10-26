@@ -230,6 +230,28 @@ actually specifies, even when the registered schema marks that field optional.
 Use the exact task literal when available; do not omit an explicit detail and
 then rely on the target Agent to invent or vary it at runtime.
 
+When a calendar-like task authorizes an Effect on a named date but deliberately
+omits its clock time, preserve that bounded freedom with deterministic Effect
+argument constraints instead of inventing a time or asking semantic grounding
+to approve one. Copy the date phrase byte-for-byte from the trusted task:
+
+```json
+{
+  "start_time": {"constraint": {
+    "operator": "datetime_on_task_date",
+    "task_text": "14th of November"
+  }},
+  "end_time": {"constraint": {
+    "operator": "datetime_after_argument",
+    "argument": "start_time",
+    "max_seconds": 86400
+  }}
+}
+```
+
+These constraints narrow an already requested Effect. They never supply a
+date absent from the task, and WRAP replays them in code without a model.
+
 ## Preserve the authorization boundary
 
 - Use Acquire only for information a requested outcome needs; do not predict exploratory calls.

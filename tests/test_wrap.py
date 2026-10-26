@@ -449,5 +449,62 @@ class RuntimeAuthorityBoundaryTests(unittest.TestCase):
         self.assertFalse(grounded.ok)
         self.assertFalse(semantic.ok)
 
+    def test_datetime_constraints_replay_without_model_proofs(self):
+        contract = TaskContract(
+            "Add an event on the 14th of November.", [
+                EffectClause("", "create event", "create_calendar_event", {
+                    "start_time": {"constraint": {
+                        "operator": "datetime_on_task_date",
+                        "task_text": "14th of November",
+                    }},
+                    "end_time": {"constraint": {
+                        "operator": "datetime_after_argument",
+                        "argument": "start_time",
+                        "max_seconds": 86400,
+                    }},
+                }),
+            ])
+        arguments = {
+            "start_time": "2024-11-14 10:00",
+            "end_time": "2024-11-14 10:30",
+        }
+        first = check_effect(
+            RuntimeState(), contract, "create_calendar_event", arguments)
+        second = check_effect(
+            RuntimeState(), contract, "create_calendar_event", arguments)
+
+        self.assertTrue(first.ok)
+        self.assertEqual(first, second)
+        self.assertEqual((QUERY_REF,), first.refs)
+
+    def test_datetime_constraints_reject_wrong_date_and_bad_interval(self):
+        contract = TaskContract(
+            "Add an event on the 14th of November.", [
+                EffectClause("", "create event", "create_calendar_event", {
+                    "start_time": {"constraint": {
+                        "operator": "datetime_on_task_date",
+                        "task_text": "14th of November",
+                    }},
+                    "end_time": {"constraint": {
+                        "operator": "datetime_after_argument",
+                        "argument": "start_time",
+                        "max_seconds": 86400,
+                    }},
+                }),
+            ])
+        wrong_date = check_effect(
+            RuntimeState(), contract, "create_calendar_event", {
+                "start_time": "2024-11-15 10:00",
+                "end_time": "2024-11-15 10:30",
+            })
+        backwards = check_effect(
+            RuntimeState(), contract, "create_calendar_event", {
+                "start_time": "2024-11-14 10:00",
+                "end_time": "2024-11-14 09:30",
+            })
+
+        self.assertEqual("untraceable-arg:start_time", wrong_date.reason)
+        self.assertEqual("untraceable-arg:end_time", backwards.reason)
+
 if __name__ == "__main__":
     unittest.main()
